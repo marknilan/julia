@@ -1,0 +1,4 @@
+name = "MyApp"
+uuid = "7ab91ce1-aa19-4efd-a248-7521cb9166a5"
+authors = ["Mark Nilan <marknilan@bigpond.com>"]
+version = "0.1.0"

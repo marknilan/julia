@@ -16,6 +16,7 @@ module config
     using DataFrames
     using CSV
     using LAJuliaUtils
+    using TOML
 
 
 #generic does some mad stuff to the structs for JSON3
@@ -30,19 +31,12 @@ StructTypes.StructType(::Type{rlexustructs.Enclosures}) = StructTypes.Mutable()
 function parse_commandline()
     s = ArgParseSettings()
     @add_arg_table s begin
-        "--config", "-c"
-        help = "E03 ERROR rlexu program call must include --config or -c with a filename containing parameters eg. rlexu --config rlexuparms.cfg"
+        "-C", "-c", "--config", "--c","--CONFIG", "--C" 
+        help = "E03 ERROR rlexu program call must include -c with a filename containing parameters in TOML format eg. dlexu --config rlexuparms.toml"
         required = true   
         action = :store_arg                  
     end
-        
-    @add_arg_table s begin
-        "--datefmt", "-d"
-                help = "E04 ERROR rlexu program call must include --datefmt or -d with a filename containing date formats eg. rlexu --config rlexuparms.cfg --datefmt dateloader.cfg "
-                required = true   
-                action = :store_arg    
-    end
-        
+               
     return parse_args(s)
 
 end
@@ -68,6 +62,27 @@ function getcfg(config::String, cfghold)
 
     return cfghold # returns the struct containing the config details for session
 
+end
+
+function getTOML(cfgfile::String)
+    tomlcontent = ""
+    println("cfgfile is : $(cfgfile)")
+    try
+       f = open(cfgfile, "r")
+       tomlcontent = read(f, String)
+       #println(tomlcontent)
+       close(f)
+    catch e
+           println("Could not open file")
+       end
+    try
+
+       dlexuconfig = TOML.parse(tomlcontent)
+    catch e
+       println("TOML parse error")
+    end
+    
+            
 end
 
 # ------------------------------------------------------------------------------------

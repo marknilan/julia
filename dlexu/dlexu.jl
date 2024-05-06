@@ -31,6 +31,7 @@ using Blink
 #cleanup
 #Pkg.gc()
 
+
 #---------------------------------------- MAINLINE --------------------------------------
 
 #acknowledging this link for dates https://en.wikipedia.org/wiki/Date_format_by_country
@@ -47,20 +48,11 @@ function main()
 
     # ---------------------------- CONFIGURATION of RLXEU -------------------------------
 
-    # reads the command line call to rlexu passes back a string of args
-    parsed_args = config.parse_commandline()  
-    #this struct is the configuration used throughout this rlexu session
-    cfghold = config.checkconfig(parsed_args["config"],parsed_args["datefmt"])    
-    println("\n typeof(cfghold): ", typeof(cfghold))        
-    # read the date formats file contains date data used for determining date propensities
-    date_format_list = config.makedatefmts(parsed_args["datefmt"])
-    for (key, value) in date_format_list
-        println("$value \n")
-    end
+    # reads the command line call expects dlexu [file in TOML format and its path]
+    println(ARGS[2])
+    dlexuTOML = config.getTOML(ARGS[2])
+    println("dlexuTOML is : $(dlexuTOML)")
 
-    #read the enclosures file getting the enclosuyres list to use in this rlexu session
-    encl_list = config.getenclosures(enclosuresfile)     
-  
 end # mainline
 
 # ------------------------------------------------------------------------------------

@@ -6,10 +6,12 @@ include("../jlib/jlib.jl")
 #rlexu modules
 include("./rlexustructs.jl")
 include("./config.jl")
+include("./gui.jl")
 
 using .config
 using .rlexustructs
 using .jlib
+using mousetrap 
 
 using StructTypes
 using ArgParse
@@ -44,9 +46,16 @@ const match_margin = 0.15
 const enclosuresfile = "rlexuenclosures.json"
 
 function main() do app::Application
+<<<<<<< Updated upstream:backup/dlexu.jl
     window = Window(app)
     set_child!(window, Label("Hello World!"))
     present!(window)
+=======
+       window = Window(app)
+       set_child!(window, Label("Hello World!"))
+       present!(window)
+       end
+>>>>>>> Stashed changes:dlexu/dlexu.jl
 
     jlib.disptm("rlexu began at")
 
@@ -56,6 +65,7 @@ function main() do app::Application
     println(ARGS[2])
     dlexuTOML = config.getTOML(ARGS[2])
     println("dlexuTOML is : $(dlexuTOML)")
+
 
 end # mainline
 

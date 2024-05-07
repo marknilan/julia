@@ -19,6 +19,7 @@ using Match
 using JSON3
 using StringDistances
 using Blink
+using mousetrap
 
 #Package examples dont delete
 #    # import Pkg; Pkg.add("JSON3")
@@ -42,7 +43,10 @@ const samplesize = 5000
 const match_margin = 0.15
 const enclosuresfile = "rlexuenclosures.json"
 
-function main()
+function main() do app::Application
+    window = Window(app)
+    set_child!(window, Label("Hello World!"))
+    present!(window)
 
     jlib.disptm("rlexu began at")
 

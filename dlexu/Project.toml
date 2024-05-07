@@ -1,0 +1,8 @@
+name = "dlexu"
+uuid = "60a4625f-13b9-497a-93cc-3085e867af8c"
+authors = ["Mark Nilan <mark7498@outlook.com>"]
+version = "0.1.0"
+
+[deps]
+Mousetrap = "5deeb4b9-6e04-4da7-8b7f-c77fb1eae65e"
+ 

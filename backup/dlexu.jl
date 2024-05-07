@@ -6,7 +6,11 @@ include("../jlib/jlib.jl")
 #rlexu modules
 include("./rlexustructs.jl")
 include("./config.jl")
+<<<<<<< Updated upstream:backup/dlexu.jl
 include("./gui.jl")
+=======
+include("./startup.jl")
+>>>>>>> Stashed changes:dlexu/dlexu.jl
 
 using .config
 using .rlexustructs
@@ -61,12 +65,25 @@ function main() do app::Application
 
     # ---------------------------- CONFIGURATION of RLXEU -------------------------------
 
+<<<<<<< Updated upstream:backup/dlexu.jl
     # reads the command line call expects dlexu [file in TOML format and its path]
     println(ARGS[2])
     dlexuTOML = config.getTOML(ARGS[2])
     println("dlexuTOML is : $(dlexuTOML)")
 
 
+=======
+    # reads the command line call to rlexu passes back a string of args
+    parsed_args = startup.parse_commandline()  
+    if !(parsed_args.length() > 1) isempty()
+        println(
+            "E01 ERROR - the dlexu configuration TOML file must be provided with the -c parameter",
+        )
+        exit(2)
+    end
+    println(ARGS[2]);
+  
+>>>>>>> Stashed changes:dlexu/dlexu.jl
 end # mainline
 
 # ------------------------------------------------------------------------------------

@@ -27,13 +27,13 @@ const samplesize = 5000
 const match_margin = 0.15
 const enclosuresfile = "rlexuenclosures.json"
 
-       function main() do app::Application
-           window = Window(app)
-           set_child!(window, Label("Hello World!"))
-           present!(window)
-       end    
-    
-       end # mainline
+function main() do app::Application
+    window = Window(app)
+    set_child!(window, Label("Hello World!"))
+    present!(window)
+end
+
+end # mainline
 
 # ------------------------------------------------------------------------------------
 

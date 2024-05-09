@@ -1,30 +1,37 @@
 module config
 
-using TOML
+using TOML, StructTypes
+include("./structs.jl")
 
 # reads a TOML format file, gets dlexu configuration information
 
 function getTOML(cfgfile::String)
 
-    tomlcontent = ""
+    TomlParse = Dict()
     println("DLEXU configuration TOML is being read from file : $(cfgfile)")
     try
-        f = open(cfgfile, "r")
-        tomlcontent = read(f, String)
-        close(f)
-    catch e
-        println("Could not open file $(e)")
-    end
-    try
-        f = open(cfgfile, "r")
-        tomlcontent = TOML.parsefile(f)
-        close(f)
+        TomlParse = TOML.tryparsefile(cfgfile)
+        println("TomlParse is $(TomlParse)")
     catch e
         println("TOML parse complete")
     end
-    println("type of tomlcontent is $(typeof(tomlcontent))")
-    mud = TOML.parse(tomlcontent)
-      return mud
+   
+   # LOOPING THROUGH THE TOML DICT
+   for (iKey, iValue) in TomlParse
+
+      for iValue in (keys(iValue))
+         if iKey == "config"
+            setfield!(structs.DlexuCfg, Symbol(iValue), TomlParse[iKey][iValue])
+
+         elseif iKey == "dateformats"
+            dlexudates = TomlParse[iKey][iValue]
+            println("dlexudates is : $(dlexudates)")
+         end 
+      end
+   end
+
+
+      return TomlParse
 end
 
 end #module

@@ -1,0 +1,26 @@
+title = "DLEXU Config TOML"
+
+[config]
+   infiletype = "LOG"
+   inquote = " "
+   logfile = "c:\\users\\mark\\testfiles\\oracle_log.txt"
+   delimiter = "|"
+   datefmt = "YYMMDD10."
+   indelm = " "
+   outdir = "c:\\temp"
+   quotes = "'"
+
+[encl]
+enclpairs = [
+   { encl1 = "str1" },
+   { encl2 = "str2" }, 
+   { encl1 = "<" },
+   { encl2 = ">" },
+   { encl1 = "(" },
+   { encl2 = ")" },
+   { encl1 = "{" },
+   { encl2 = "}" }
+]
+
+[date]
+  dateformats = "c:\\users\\mark7\\dlexudates.csv"

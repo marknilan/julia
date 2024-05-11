@@ -1,0 +1,136 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content="HTML for using in the DLEXU application main menu" />
+
+<script type="text/javascript">
+   
+    function performClick(elemId) {
+   var elem = document.getElementById(elemId);
+   if(elem && document.createEvent) {
+      var evt = document.createEvent("MouseEvents");
+      evt.initEvent("click", true, false);
+      elem.dispatchEvent(evt);
+   }
+    } 
+
+    function output() {
+        document.getElementById("printoutput").value = "file name here";
+    }
+    function endDlexUi(window) {
+        console.log('Cancel pressed')
+    }
+    function resizeToMinimum() {
+       const minimum = [500, 320];
+       const current = [window.outerWidth, window.outerHeight];
+       const restricted = [Math.max(minimum[0], current[0]), Math.max(minimum[1], current[1])];
+       window.resizeTo(restricted[0], restricted[1]);
+    }
+
+    async function callV() {
+        // Call a V function that takes an argument and returns a value.
+        const res = await window.my_v_func('Hello from JS!');
+        console.log(res);
+    }
+
+     window.addEventListener('resize', resizeToMinimum);
+     
+     var size = [window.width,window.height];
+     $(window).resize(function(){
+        window.resizeTo(size[0],size[1]);
+     });
+
+
+    
+
+</script>
+
+<style type="text/css">
+
+     body {
+       background: #D4D4D4;
+       background: -moz-linear-gradient(left, #D4D4D4 0%, #808080 50%, #144E75 100%);
+       background: -webkit-linear-gradient(left, #D4D4D4 0%, #2388CB 50%, #144E75 100%);
+       background: linear-gradient(to right, #D4D4D4 0%, #808080 50%, #808080 100%);
+       align-items: left;
+       justify-content: left;
+       h width: 95%;
+       height: 95%;
+       overflow: hidden;       
+       margin: 15;
+     }
+  
+     .myButton {
+        background-color: #979596;
+        border: none;
+        color: white;  
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        float: right;
+        padding: 10px; 
+        border-radius: 7px;
+        margin-left:10px; 
+    }
+
+    .myButton:hover {background: #1C6EA4;}
+    .myButton:active {background: #144E75;}  
+  
+</style>
+
+  <title>DLEXU</title>
+</head>
+
+<body>
+  <h2 style="text-align: left;"><strong>DLEXU - the Devops Log eXtract
+  Utility</strong></h2>
+  <hr />
+
+  <p><label for="Configuration file (TOML)">Configuration file (TOML)</label>
+  <input type="file" id="cfgfile" name="cfgfile" required="yes" size="60"/>
+  <a href="#" onclick="performClick('cfgfile');">...</a><br />
+
+  <label for="Dates format file (CSV)">Dates format file (CSV)</label> <input type="text"
+  id="name" name="name" required="" size="60" /> <button onclick=
+  "getCfgFile()">...</button></p>
+  <hr />
+
+  <p><input id="printoutput" readonly="readonly" type="text" /></p>
+
+  <div id="content"></div>
+
+  <form action="/action.php" method="post">
+    logfile: <input name="logfile&quot;" type="text" /> <button onclick=
+    "onButtonClicked()">...</button><br />
+    infiletype: <input name="infiletype&quot;" type="text" /><br />
+    inquote: <input name="inquote&quot;" type="text" /><br />
+    indelm: <input name="indelm&quot;" type="text" /><br />
+    <hr />
+    delimiter: <input name="delimiter&quot;" type="text" /><br />
+    outdir: <input name="outdir&quot;" type="text" /> <button onclick=
+    "onButtonClicked()">...</button><br />
+    datefmt: <input name="datefmt&quot;" type="text" /><br />
+    quotes: <input name="quotes&quot;" type="text" />
+  </form>
+  <hr />
+
+  <div class="myButton" id="cancbutt" type="button" value="End Dlexu" onclick=
+  "endDlexUi()">
+    Cancel
+  </div>
+
+  <div class="myButton" id="savebutt" type="button" value="Save Configuration" onclick=
+  "output()">
+    Save
+  </div>
+
+  <div class="myButton" id="contbutt" type="button" value="Save and run DLEXU" onclick=
+  "callV()">
+    Continue
+  </div>
+
+  <a href="#" onclick="performClick('theFile');">...</a>
+<input type="file" id="theFile" />
+
+</body>
+</html>

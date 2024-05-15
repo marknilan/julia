@@ -231,4 +231,42 @@ function countlines(filename::String)
     end   
 end
 
+# specific WSL code for MS windows types used to opens a specific windows OS browser
+
+function detectwsl()
+    Sys.islinux() &&
+    isfile("/proc/sys/kernel/osrelease") &&
+    occursin(r"Microsoft|WSL"i, read("/proc/sys/kernel/osrelease", String))
+end
+
+# opens passed paremeter URL in browser dependent on machine
+# example local file 
+# cmd.exe /s /c start "" /b "file:///C:/Users/Mark/projects/julia/dlexu/DlexuMenu/lib/index.html"
+
+function open_in_default_browser(url::AbstractString)::Bool
+    try
+        if Sys.isapple()
+            Base.run(`open $url`)
+            return true
+        elseif Sys.iswindows() || detectwsl()
+            Base.run(`cmd.exe /s /c start "" /b $url`)
+            return true
+        elseif Sys.islinux()
+            browser = "xdg-open"
+            if isfile(browser)
+                Base.run(`$browser $url`)
+                return true
+            else
+                @warn "Unable to find `xdg-open`. Try `apt install xdg-open`"
+                return false
+            end
+        else
+            return false
+        end
+    catch ex
+        return false
+    end
+end
+
+
 end # module lib

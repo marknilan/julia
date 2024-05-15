@@ -22,10 +22,6 @@ function getTOML(cfgfile::String)
       for iValue in (keys(iValue))
          if iKey == "config"
             setfield!(structs.DlexuCfg, Symbol(iValue), TomlParse[iKey][iValue])
-
-         elseif iKey == "dateformats"
-            dlexudates = TomlParse[iKey][iValue]
-            println("dlexudates is : $(dlexudates)")
          end 
       end
    end

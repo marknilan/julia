@@ -29,4 +29,17 @@ Base.@kwdef mutable struct DateLookup
     date_example::String = " "
 end
 
+export Encl
+Base.@kwdef mutable struct Encl
+    encl1::String = " "
+    encl2::String = " "
+end
+
+
+export DlexuEncl
+Base.@kwdef mutable struct DlexuEncl
+    enclpairs::Array[Encl] = [ [" ", " "] ]
+end
+
+
 end #module

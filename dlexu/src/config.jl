@@ -8,6 +8,7 @@ include("./structs.jl")
 function getTOML(cfgfile::String)::Bool
 
     dlexucfg = structs.DlexuCfg()
+    dlexuencl = structs.DlexuEncl()
     dlexudates = ""
     TomlParse = Dict()
     println("cfgfile is $(cfgfile)")
@@ -32,13 +33,19 @@ function getTOML(cfgfile::String)::Bool
          if iKey == "config"
             setfield!(dlexucfg, Symbol(iValue), TomlParse[iKey][iValue]) 
          elseif iKey == "date"
-            dlexudates = TomlParse[iKey][iValue]             
+            dlexudates = TomlParse[iKey][iValue] 
+               elseif iKey == "enclosures"
+                  setfield!(dlexuencl.enclpairs, Symbol(iValue), TomlParse[iKey][iValue]) 
+         
+                        
          end 
       end
 
    end   
     println("dlexucfg logfile is $(dlexucfg.logfile)") 
     println("dlexudates is $(dlexudates) ")
+    println("enclpairs is $(dlexuencl) ")
+    
     return true 
 end
 

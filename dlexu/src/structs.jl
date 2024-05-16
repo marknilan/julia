@@ -29,15 +29,4 @@ Base.@kwdef mutable struct DateLookup
     date_example::String = " "
 end
 
-# ------------------------------------------------------------------------------------
-#TOML format array contains the specific enclosures used for this execution of dlexu
-#example '[]', '()', '{}', '::', 'str1 str2'
-
-export Enclosures
-Base.@kwdef mutable struct Enclosures
-    encl1::String = " "
-    encl2::String = " "
-end
-
-
 end #module

@@ -5,29 +5,41 @@ include("./structs.jl")
 
 # reads a TOML format file, gets dlexu configuration information
 
-function getTOML(cfgfile::String)
+function getTOML(cfgfile::String)::Bool
 
+    dlexucfg = structs.DlexuCfg()
+    dlexudates = ""
     TomlParse = Dict()
+    println("cfgfile is $(cfgfile)")
     println("DLEXU configuration TOML is being read from file : $(cfgfile)")
-    try
-        TomlParse = TOML.tryparsefile(cfgfile)
-        println("TomlParse is $(TomlParse)")
-    catch e
-        println("TOML parse complete")
-    end
+    if !(isfile(cfgfile))        
+        println("Error : Config file $(cfgfile) does not exist")
+        exit(8)
+    else     
+        try
+           TomlParse = TOML.parsefile(cfgfile)
+           println("TomlParse is $(TomlParse)")
+        catch e
+           println("TOML parse complete")
+        end
+    end    
    
-   # LOOPING THROUGH THE TOML DICT
+   
+     # LOOPING THROUGH THE DICT
    for (iKey, iValue) in TomlParse
 
       for iValue in (keys(iValue))
          if iKey == "config"
-            setfield!(structs.DlexuCfg, Symbol(iValue), TomlParse[iKey][iValue])
+            setfield!(dlexucfg, Symbol(iValue), TomlParse[iKey][iValue]) 
+         elseif iKey == "date"
+            dlexudates = TomlParse[iKey][iValue]             
          end 
       end
-   end
 
-
-      return TomlParse
+   end   
+    println("dlexucfg logfile is $(dlexucfg.logfile)") 
+    println("dlexudates is $(dlexudates) ")
+    return true 
 end
 
 end #module

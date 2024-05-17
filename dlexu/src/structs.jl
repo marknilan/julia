@@ -35,11 +35,9 @@ Base.@kwdef mutable struct Encl
     encl2::String = " "
 end
 
-
 export DlexuEncl
 Base.@kwdef mutable struct DlexuEncl
     enclpairs::Vector{Encl} = []
 end
-
 
 end #module

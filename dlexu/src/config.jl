@@ -7,8 +7,8 @@ include("./structs.jl")
 
 function getTOML(cfgfile::String)::Bool
 
+    enclist = Vector{String}
     dlexucfg = structs.DlexuCfg()
-    dlexuencl = structs.DlexuEncl()
     dlexudates = ""
     TomlParse = Dict()
     println("cfgfile is $(cfgfile)")
@@ -21,38 +21,47 @@ function getTOML(cfgfile::String)::Bool
            TomlParse = TOML.parsefile(cfgfile)
            println("TomlParse is $(TomlParse)")
         catch e
-           println("TOML parse complete")
+           println("TOML parse error $(e)")
         end
     end    
-   
-   
-     # LOOPING THROUGH THE DICT
-   for (iKey, iValue) in TomlParse
-
+    for (iKey, iValue) in TomlParse
       for iValue in (keys(iValue))
          if iKey == "config"
             setfield!(dlexucfg, Symbol(iValue), TomlParse[iKey][iValue]) 
          elseif iKey == "date"
             dlexudates = TomlParse[iKey][iValue] 
-               elseif iKey == "enclosures"
-                  println("iValue is $(iValue)") 
-                  setfield!(dlexuencl.enclpairs, Symbol(iValue), TomlParse[iKey][iValue]) 
-                  #for iValue in (keys(iValue))                  
-                      #println("iValue Symbol is $(Symbol(iValue))")
-                      #println("iKey is $(iKey)")
-                      #println("iValue is $(iValue)")
-                      #println("TomlParse is $(TomlParse[iKey][iValue])")
-                  #setfield!(dlexuencl.enclpairs, Symbol(iValue), TomlParse[iKey][iValue]) 
-                  #end
-               end 
+             elseif iKey == "enclosures"
+                 enclist = TomlParse[iKey][iValue] 
+         end 
       end
 
-   end   
+    end   
+    if !iseven(length(enclist)) 
+        println("Error : Enclosure list $(enclist) has ODD number of elements - must be EVEN")
+        exit(8)
+    end    
+    
+    dlexuencl = MakeEncl(enclist)
+
     println("dlexucfg logfile is $(dlexucfg.logfile)") 
     println("dlexudates is $(dlexudates) ")
-    println("enclpairs is $(dlexuencl) ")
+    println("dlexuencl is $(length(dlexuencl)) ")
     
     return true 
 end
+
+function MakeEncl(enclist::Vector{String})::structs.DlexuEncl
+    dlexuencl = structs.DlexuEncl()
+    encl = structs.Encl()
+    for i in 1:length(enclist)
+        if iseven(i) 
+            encl.encl1 = enclist[i]
+        else
+            encl.encl2 = enclist[i]
+            push!(dlexuencl.enclpairs, encl); 
+        end
+    end
+    return dlexuencl
+end    
 
 end #module

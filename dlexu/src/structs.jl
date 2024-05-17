@@ -38,7 +38,7 @@ end
 
 export DlexuEncl
 Base.@kwdef mutable struct DlexuEncl
-    enclpairs::Array[Encl] = [ [" ", " "] ]
+    enclpairs::Vector{Encl} = []
 end
 
 

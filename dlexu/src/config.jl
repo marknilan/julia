@@ -35,10 +35,16 @@ function getTOML(cfgfile::String)::Bool
          elseif iKey == "date"
             dlexudates = TomlParse[iKey][iValue] 
                elseif iKey == "enclosures"
+                  println("iValue is $(iValue)") 
                   setfield!(dlexuencl.enclpairs, Symbol(iValue), TomlParse[iKey][iValue]) 
-         
-                        
-         end 
+                  #for iValue in (keys(iValue))                  
+                      #println("iValue Symbol is $(Symbol(iValue))")
+                      #println("iKey is $(iKey)")
+                      #println("iValue is $(iValue)")
+                      #println("TomlParse is $(TomlParse[iKey][iValue])")
+                  #setfield!(dlexuencl.enclpairs, Symbol(iValue), TomlParse[iKey][iValue]) 
+                  #end
+               end 
       end
 
    end   

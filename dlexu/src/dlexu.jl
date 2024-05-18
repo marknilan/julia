@@ -19,7 +19,7 @@ function dlexu()
     # check - do we need to sample the file? based on the constant samplesize
     tstpop = instream.get_tstpop(dlexucfg.logfile, samplesize, error_margin) 
     println("tstpop is $(tstpop)")
-    sl = instream.snifflines(dlexucfg.logfile,tstpop)
+    sl = instream.snifflines(dlexucfg.logfile,tstpop,dlexuencl)
     println("sl is $(sl)")
     #println("dlexuencl is $(dlexuencl)")
     #println("dlexucfg logfile is $(dlexucfg)") 

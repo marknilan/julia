@@ -1,13 +1,14 @@
 module config
 
 using TOML, StructTypes
-include("./structs.jl")
 
+include("./structs.jl")
 
 # reads a TOML format file, gets dlexu program configuration 
 function getTOML(cfgfile::String)
     enclist = Vector{String}
     dlexucfg = structs.DlexuCfg()
+    dlexuencl = structs.DlexuEncl()
     dlexudates = ""
     TomlParse = Dict()
     println("cfgfile is $(cfgfile)")
@@ -35,32 +36,34 @@ function getTOML(cfgfile::String)
       end
 
     end   
+
+    # errors if ODD number (enforces pairs of enclosures)
     if !iseven(length(enclist)) 
         println("Error : Enclosure list $(enclist) has ODD number of elements - must be EVEN")
         exit(8)
     end    
-    
-   
+       
     dlexuencl = MakeEncl(enclist)
     println("dlexuencl is $(dlexuencl.enclpairs[1].encl1)")
 
-
-       
     return dlexucfg, dlexudates, dlexuencl
 end
 
 # turns a EVEN number of array elements into an enclosure pairs struct
-# errors if ODD number (enforces pairs of enclosures)
+
 function MakeEncl(enclist::Vector{String})::structs.DlexuEncl
-    dlexuencl = structs.DlexuEncl()
     encl = structs.Encl()
+    dlexuencl = structs.DlexuEncl()
     for i in 1:length(enclist)
         if iseven(i) 
             encl.encl2 = enclist[i]
         else
-            encl.encl1 = enclist[i]
-            push!(dlexuencl.enclpairs, encl); 
+            encl.encl1 = enclist[i]       
+            continue
         end
+        push!(dlexuencl.enclpairs, encl);
+        encl = structs.Encl() 
+        println("dlexuencl is $(dlexuencl)")   
     end
      
 

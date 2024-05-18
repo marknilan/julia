@@ -1,9 +1,6 @@
-tst = R"$a\n$b"
-
-length(matchall(tst, "$, bar, foo"))
-
 1 . round bracket [()]
 2. square bracket [\[\]]
+
 pointy bracket <> = 1
 curly bracket {} = 1
 colon = 1

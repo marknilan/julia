@@ -1,0 +1,39 @@
+tst = R"$a\n$b"
+
+length(matchall(tst, "$, bar, foo"))
+
+1 . round bracket [()]
+2. square bracket [\[\]]
+pointy bracket <> = 1
+curly bracket {} = 1
+colon = 1
+forward slash / = 2
+caret ^ = 2
+backslash \ = 2
+dollar $ = 1
+dot . = 1
+bar | = 2
+question ? = 1
+asterix * = 1
+plus + = 1
+
+
+There are 12 characters with special meanings: 
+These special characters are often called “metacharacters”. 
+
+the backslash \, 
+the caret ^, 
+the dollar sign $, 
+the period or dot ., 
+the vertical bar or pipe symbol |, 
+the question mark ?, 
+the asterisk or star *, 
+the plus sign +, 
+the opening parenthesis (, 
+the closing parenthesis ), 
+the opening square bracket [, 
+the opening curly brace {, 
+
+
+
+ 

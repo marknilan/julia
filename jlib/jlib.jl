@@ -26,14 +26,19 @@ end
 function guagefile(filename::String)
     io = IOBuffer()
     f = open(filename)
-    l0 = readline(f)
-    linecounter = 0
-    for line in eachline(f)
-        # print(io, chomp(line))
-        linecounter += 1
+    try
+        l0 = readline(f)
+        linecounter = 0
+        for line in eachline(f)
+           linecounter += 1
+        end
+        println(" ==     Input Rows : $linecounter")
+    catch e
+        println("Error while reading the file: ", e)
+    finally
+        close(f)
     end
-    println(" ==     Input Rows : $linecounter")
-
+    
     return String(take!(io))
 
 end

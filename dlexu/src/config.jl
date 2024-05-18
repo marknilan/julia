@@ -3,9 +3,9 @@ module config
 using TOML, StructTypes
 include("./structs.jl")
 
-# reads a TOML format file, gets dlexu configuration information
 
-function getTOML(cfgfile::String) 
+# reads a TOML format file, gets dlexu program configuration 
+function getTOML(cfgfile::String)
     enclist = Vector{String}
     dlexucfg = structs.DlexuCfg()
     dlexudates = ""

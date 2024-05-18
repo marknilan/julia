@@ -1,8 +1,18 @@
 module gui
 
-using Blink
-#using Mousetrap
 
+
+#    using Base:read_sub
+#    include("../../jlib/jlib.jl")
+#    using .lib
+#    using StructTypes
+#    using ArgParse
+#    using Printf
+#    using DataFrames
+#    using LAJuliaUtils
+#    # import Pkg; Pkg.add("JSON3")
+#    using JSON3    
+#    using CSV
 
 
  
@@ -38,35 +48,5 @@ function dispcmdline(parsed_args::Dict{String, Any})
     end              
 
 end
-
-
-function startUI()
-  
-    d = Dict("title"=>"Rlexu","center"=>"false","frame"=>"true")
-
-    w = Window(d) # Open a new window
-
-    handle(w, "press") do args...
-         println("Start")
-         sleep(5) # This will happily yield to any other computation.
-         println("End")
-    end
-
-    body!(w, """<button onclick='Blink.msg("press", 1)'>go</button>""", async=false);
-
-    while true  # Still an infinite loop, but a _fair_ one.
-      yield()  # This will yield to any other computation, allowing the callback to run.
-    end
-
-end
-
-#function mtUI() 
-##    do app::Application
-#       window = Window(app)
-#       set_child!(window, Label("Hello World!"))
-#       present!(window)
-#    end
-
-#end
 
 end #module

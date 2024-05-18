@@ -5,8 +5,7 @@ include("./structs.jl")
 
 # reads a TOML format file, gets dlexu configuration information
 
-function getTOML(cfgfile::String)::Bool
-
+function getTOML(cfgfile::String) 
     enclist = Vector{String}
     dlexucfg = structs.DlexuCfg()
     dlexudates = ""
@@ -41,26 +40,30 @@ function getTOML(cfgfile::String)::Bool
         exit(8)
     end    
     
+   
     dlexuencl = MakeEncl(enclist)
+    println("dlexuencl is $(dlexuencl.enclpairs[1].encl1)")
 
-    println("dlexucfg logfile is $(dlexucfg.logfile)") 
-    println("dlexudates is $(dlexudates) ")
-    println("dlexuencl is $(length(dlexuencl)) ")
-    
-    return true 
+
+       
+    return dlexucfg, dlexudates, dlexuencl
 end
 
+# turns a EVEN number of array elements into an enclosure pairs struct
+# errors if ODD number (enforces pairs of enclosures)
 function MakeEncl(enclist::Vector{String})::structs.DlexuEncl
     dlexuencl = structs.DlexuEncl()
     encl = structs.Encl()
     for i in 1:length(enclist)
         if iseven(i) 
-            encl.encl1 = enclist[i]
-        else
             encl.encl2 = enclist[i]
+        else
+            encl.encl1 = enclist[i]
             push!(dlexuencl.enclpairs, encl); 
         end
     end
+     
+
     return dlexuencl
 end    
 

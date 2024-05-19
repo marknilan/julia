@@ -14,6 +14,8 @@ question ? = 1
 asterix * = 1
 plus + = 1
 
+nonslashrx = ["<", ">", "(", ")", "{", "}", ":", "$", ".", "?","*", "+"]
+slashrx = ["[", "]", "/", "^", "\", "|"]
 
 There are 12 characters with special meanings: 
 These special characters are often called “metacharacters”. 
@@ -31,6 +33,15 @@ the closing parenthesis ),
 the opening square bracket [, 
 the opening curly brace {, 
 
-
+\ 	A backslash always escapes the character that follows it. The escaped character can be a single character or the start or end of a range. But Alphanumeric characters cannot be escaped with a backslash.
+^	A caret (^) negates the character class if you place it immediately after the opening bracket. It makes the character class match any character that is not in the list.
+\r	used for carriage return. 
+\n	used for line feed.
+–	It creates a range when it is placed between two characters. The range includes the character before the hyphen, the character after the hyphen, and all characters that lie between them in numerical order. ‹[A-z]› includes all characters in the ASCII table between the uppercase A and the lowercase z. The range includes some punctuation, so ‹[A-Z\[\\\]\^_`a-z]› matches the same characters more explicitly. 
+\b	Matches word boundaries. 
+\B	Matches non-word boundaries.
+\d	Any character that matches decimal digit.
+\s	Any kind of whitespace or invisible separator.
+\w	Any character that matches an alphanumeric character, plus underscore.
 
  

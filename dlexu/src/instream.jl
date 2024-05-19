@@ -34,17 +34,17 @@ function snifflines(logfile::String, tstpop::Int64,dlexuencl)::Bool
 
     testlines = collect(Iterators.take(eachline(logfile), tstpop))
     
-    for i in eachindex(testlines)
+    #for i in eachindex(testlines)
         #println(testlines[i])
-        b = count_encl_occurrence(testlines[i],dlexuencl)
-    end
+        b = count_encl_occurrence(testlines,dlexuencl)
+    #end
     
-    #println("testlines is $(testlines)")
+    println("b $(b)")
     return true
 
 end
 
-function count_encl_occurrence(logline,dlexuencl)::Bool
+function count_encl_occurrence(testlines,dlexuencl)::Bool
 
 #1 . round bracket [()]
 #2. square bracket [\[\]]
@@ -53,35 +53,20 @@ function count_encl_occurrence(logline,dlexuencl)::Bool
     slashrx = ["[", "]", "/", "^", "\\", "|"]
 
     #println("length of enclpairs is $(length(dlexuencl.enclpairs))")
-    rxstr = ""    
+ 
     for i in eachindex(dlexuencl.enclpairs)
-        if isodd(i)
-           prt = false
-           if dlexuencl.enclpairs[i].encl1 in nonslashrx
-              rxstr = "["*dlexuencl.enclpairs[i].encl1   
-           elseif dlexuencl.enclpairs[i].encl1 in slashrx
-              rxstr = "[\\"*dlexuencl.enclpairs[i].encl1
-               else
-                  rxstr = "["*dlexuencl.enclpairs[i].encl1
-           end
-           println("rxstr 1 = $(rxstr)")
-        else 
-           if dlexuencl.enclpairs[i].encl2 in nonslashrx
-              rxstr = rxstr*" "*dlexuencl.enclpairs[i].encl2*"]"
-              elseif dlexuencl.enclpairs[i].encl2 in slashrx
-                   rxstr = rxstr*" "*"\\"*dlexuencl.enclpairs[i].encl2*"]"
-                  else
-                      rxstr = rxstr*" "*dlexuencl.enclpairs[i].encl2*"]"
-           end
-           prt = true
-        end                     
-        #println(" ===> $(dlexuencl.enclpairs[i].encl1)")
-        #println(" ===> $(dlexuencl.enclpairs[i].encl2)")
-        
-    end    
-
-    return true
-end
-
+        encl1 = dlexuencl.enclpairs[i].encl1
+        encl2 = dlexuencl.enclpairs[i].encl2
+        for iValue in testlines
+            if length(encl1) > 1 && length(encl2) > 1
+               t = "\\b$(encl1)|$(encl2)\\b"
+               println("t = $(t)")
+               p = div(length(collect(eachmatch(r"", iValue))),2)
+               println("p is $(p)")
+            end   
+        end
+    end
+    return true        
+end 
 
 end # module

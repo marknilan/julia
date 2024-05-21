@@ -44,27 +44,24 @@ function snifflines(logfile::String, tstpop::Int64,dlexuencl)::Bool
 
 end
 
+# NEEDS HANDLING FOR BACKSLASH
 function count_encl_occurrence(testlines,dlexuencl)::Bool
 
 #1 . round bracket [()]
 #2. square bracket [\[\]]
 
-    nonslashrx = ["<", ">", "(", ")", "{", "}", ":", "\$", ".", "?","*", "+"]
-    slashrx = ["[", "]", "/", "^", "\\", "|"]
+    #nonslashrx = ["<", ">", "(", ")", "{", "}", ":", "\$", ".", "?","*", "+"]
+    #slashrx = ["[", "]", "/", "^", "\\", "|"]
 
     #println("length of enclpairs is $(length(dlexuencl.enclpairs))")
  
     for i in eachindex(dlexuencl.enclpairs)
         encl1 = dlexuencl.enclpairs[i].encl1
         encl2 = dlexuencl.enclpairs[i].encl2
-        for iValue in testlines
-            if length(encl1) > 1 && length(encl2) > 1
-               t = "\\b$(encl1)|$(encl2)\\b"
-               println("t = $(t)")
-               p = div(length(collect(eachmatch(r"", iValue))),2)
-               println("p is $(p)")
-            end   
-        end
+
+       p = div(length(findall(contains(encl1),testlines)) + length(findall(contains(encl2),testlines)),2)
+       println("p is $(p)") 
+       
     end
     return true        
 end 

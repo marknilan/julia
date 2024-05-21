@@ -47,4 +47,9 @@ Base.@kwdef mutable struct EnclProb
     prob::Float64 = 0.0
 end
 
+export EnclScores
+Base.@kwdef mutable struct EnclScores
+    enclscores::Vector{EnclProb} = []
+end
+
 end #module

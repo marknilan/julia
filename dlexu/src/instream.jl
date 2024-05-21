@@ -33,19 +33,15 @@ function snifflines(logfile::String, tstpop::Int64,dlexuencl)::Bool
     # based on the size of the file
 
     testlines = collect(Iterators.take(eachline(logfile), tstpop))
+    enclscores = count_encl_occurrence(testlines,dlexuencl)
     
-    #for i in eachindex(testlines)
-        #println(testlines[i])
-        b = count_encl_occurrence(testlines,dlexuencl)
-    #end
-    
-    println("b $(b)")
+    println("enclscores $(enclscores)")
     return true
 
 end
 
 # NEEDS HANDLING FOR BACKSLASH
-function count_encl_occurrence(testlines,dlexuencl)::Bool
+function count_encl_occurrence(testlines,dlexuencl)::structs.EnclScores
 
 #1 . round bracket [()]
 #2. square bracket [\[\]]
@@ -55,15 +51,19 @@ function count_encl_occurrence(testlines,dlexuencl)::Bool
 
     #println("length of enclpairs is $(length(dlexuencl.enclpairs))")
  
+    enclscores = structs.EnclScores()
+    enclprob = structs.EnclProb()
+    enclpaircnt = 0
     for i in eachindex(dlexuencl.enclpairs)
         encl1 = dlexuencl.enclpairs[i].encl1
         encl2 = dlexuencl.enclpairs[i].encl2
 
-       p = div(length(findall(contains(encl1),testlines)) + length(findall(contains(encl2),testlines)),2)
-       println("p is $(p)") 
+       enclpaircnt = enclpaircnt + div(length(findall(contains(encl1),testlines)) + 
+                                       length(findall(contains(encl2),testlines)),2)
+       println("enclpaircnt is $(enclpaircnt)") 
        
     end
-    return true        
+    return enclscores       
 end 
 
 end # module

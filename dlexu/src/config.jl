@@ -3,6 +3,7 @@ module config
 using TOML, StructTypes
 
 include("./structs.jl")
+include("../../jlib/jlib.jl")
 
 # reads a TOML format file, gets dlexu program configuration 
 function getTOML(cfgfile::String)
@@ -11,7 +12,6 @@ function getTOML(cfgfile::String)
     dlexuencl = structs.DlexuEncl()
     dlexudates = ""
     TomlParse = Dict()
-    println("cfgfile is $(cfgfile)")
     println("DLEXU configuration TOML is being read from file : $(cfgfile)")
     if !(isfile(cfgfile))        
         println("error : Config file $(cfgfile) does not exist")
@@ -19,7 +19,7 @@ function getTOML(cfgfile::String)
     else     
         try
            TomlParse = TOML.parsefile(cfgfile)
-           println("TomlParse is $(TomlParse)")
+           println("TOML read as follows: \n $(TomlParse)")
         catch e
            println("error : TOML parse error $(e)")
            exit(8)
@@ -45,7 +45,6 @@ function getTOML(cfgfile::String)
     end    
        
     dlexuencl = MakeEncl(enclist)
-    println("dlexuencl is $(dlexuencl.enclpairs[1].encl1)")
 
     return dlexucfg, dlexudates, dlexuencl
 end
@@ -64,9 +63,9 @@ function MakeEncl(enclist::Vector{String})::structs.DlexuEncl
         end
         push!(dlexuencl.enclpairs, encl);
         encl = structs.Encl() 
-        println("dlexuencl is $(dlexuencl)")   
+        
     end
-     
+    println("dlexuencl is $(dlexuencl)")    
 
     return dlexuencl
 end    

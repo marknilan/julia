@@ -13,12 +13,10 @@ const match_margin = 0.15
 # mainline here
 function dlexu()
     jlib.disptm("dlexu began at")
-    println(ARGS[1])
     # configuration
     dlexucfg,dlexudates,dlexuencl = config.getTOML(ARGS[1])
     # check - do we need to sample the file based on the maximum observations?
-    tstpop = instream.calc_test_population(dlexucfg.logfile, maxobs) 
-    println("tstpop is $(tstpop)")
+    tstpop = instream.calc_test_population(dlexucfg.logfile, maxobs)     
     sl = instream.score_proclivity(dlexucfg.logfile,tstpop,match_margin, dlexuencl)
     println("sl is $(sl)")
     #println("dlexuencl is $(dlexuencl)")

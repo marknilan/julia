@@ -30,7 +30,7 @@ function guagefile(filename::String)
         for line in eachline(f)
            linecounter += 1
         end
-        println("\n $(filename) Input Rows : $linecounter")
+        println("\n  $(filename) Input Rows : $linecounter")
     catch e
         println("Error while reading the file: ", e)
     finally

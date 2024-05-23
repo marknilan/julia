@@ -12,62 +12,63 @@ function getTOML(cfgfile::String)
     dlexuencl = structs.DlexuEncl()
     dlexudates = ""
     TomlParse = Dict()
-    println("DLEXU configuration TOML is being read from file : $(cfgfile)")
-    if !(isfile(cfgfile))        
+    println("    DLEXU configuration TOML is being read from file : $(cfgfile)")
+    if !(isfile(cfgfile))
         println("error : Config file $(cfgfile) does not exist")
         exit(8)
-    else     
+    else
         try
-           TomlParse = TOML.parsefile(cfgfile)
-           println("TOML read as follows: \n $(TomlParse)")
+            TomlParse = TOML.parsefile(cfgfile)
+            println("\n    TOML read as follows: \n $(TomlParse)")
         catch e
-           println("error : TOML parse error $(e)")
-           exit(8)
+            println("error : TOML parse error $(e)")
+            exit(8)
         end
-    end    
+    end
     for (iKey, iValue) in TomlParse
-      for iValue in (keys(iValue))
-         if iKey == "config"
-            setfield!(dlexucfg, Symbol(iValue), TomlParse[iKey][iValue]) 
-         elseif iKey == "date"
-            dlexudates = TomlParse[iKey][iValue] 
-             elseif iKey == "enclosures"
-                 enclist = TomlParse[iKey][iValue] 
-         end 
-      end
+        for iValue in (keys(iValue))
+            if iKey == "config"
+                setfield!(dlexucfg, Symbol(iValue), TomlParse[iKey][iValue])
+            elseif iKey == "date"
+                dlexudates = TomlParse[iKey][iValue]
+            elseif iKey == "enclosures"
+                enclist = TomlParse[iKey][iValue]
+            end
+        end
 
-    end   
+    end
 
     # errors if ODD number (enforces pairs of enclosures)
-    if !iseven(length(enclist)) 
-        println("error : enclosure list $(enclist) has ODD number of elements - must be EVEN")
+    if !iseven(length(enclist))
+        println(
+            "error : enclosure list $(enclist) has ODD number of elements - must be EVEN",
+        )
         exit(8)
-    end    
-       
+    end
+
     dlexuencl = MakeEncl(enclist)
 
     return dlexucfg, dlexudates, dlexuencl
 end
 
 # turns a EVEN number of array elements into an enclosure pairs struct
-
 function MakeEncl(enclist::Vector{String})::structs.DlexuEncl
     encl = structs.Encl()
     dlexuencl = structs.DlexuEncl()
-    for i in 1:length(enclist)
-        if iseven(i) 
+    for i = 1:length(enclist)
+        if iseven(i)
             encl.encl2 = enclist[i]
         else
-            encl.encl1 = enclist[i]       
+            encl.encl1 = enclist[i]
             continue
         end
-        push!(dlexuencl.enclpairs, encl);
-        encl = structs.Encl() 
-        
+        push!(dlexuencl.enclpairs, encl)
+        encl = structs.Encl()
+
     end
-    println("dlexuencl is $(dlexuencl)")    
+    println("    Enclosures to test for are : $(dlexuencl)")
 
     return dlexuencl
-end    
+end
 
 end #module

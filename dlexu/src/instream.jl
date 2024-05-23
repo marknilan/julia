@@ -5,7 +5,7 @@ include("./structs.jl")
 
 #determines the test population to use for file sampling
 
-function get_tstpop(logfile::String, samplesize::Int64, error_margin::Float64) 
+function calc_test_population(logfile::String, samplesize::Int64) 
 
     # check the file processing timing - how big is it, how many rows?
 
@@ -27,10 +27,10 @@ function get_tstpop(logfile::String, samplesize::Int64, error_margin::Float64)
 end
 
 
-function snifflines(logfile::String, tstpop::Int64,dlexuencl)::Bool
+function score_proclivity(logfile::String, tstpop::Int64, match_margin::Int64, dlexuencl)::Bool
 
-    # create a cursor (dataframe) of lines of the incoming file to checking
-    # based on the size of the file
+    # create a cursor of lines of the incoming file 
+    # or the whole file
 
     testlines = collect(Iterators.take(eachline(logfile), tstpop))
     enclscores = count_encl_occurrence(testlines,dlexuencl)
@@ -52,7 +52,7 @@ function count_encl_occurrence(testlines,dlexuencl)::structs.EnclScores
     #println("length of enclpairs is $(length(dlexuencl.enclpairs))")
  
     enclscores = structs.EnclScores()
-    enclprob = structs.EnclProb()
+    
     enclpaircnt = 0
     for i in eachindex(dlexuencl.enclpairs)
         encl1 = dlexuencl.enclpairs[i].encl1
@@ -60,7 +60,9 @@ function count_encl_occurrence(testlines,dlexuencl)::structs.EnclScores
 
        enclpaircnt = enclpaircnt + div(length(findall(contains(encl1),testlines)) + 
                                        length(findall(contains(encl2),testlines)),2)
-       println("enclpaircnt is $(enclpaircnt)") 
+       enclprob = structs.EnclProb(encl1,encl2,enclpaircnt/0.5)
+       println("enclprob is $(enclprob)") 
+
        
     end
     return enclscores       

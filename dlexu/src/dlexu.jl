@@ -17,9 +17,9 @@ function dlexu()
     # configuration
     dlexucfg,dlexudates,dlexuencl = config.getTOML(ARGS[1])
     # check - do we need to sample the file? based on the constant samplesize
-    tstpop = instream.get_tstpop(dlexucfg.logfile, samplesize, error_margin) 
+    tstpop = instream.calc_test_population(dlexucfg.logfile, samplesize) 
     println("tstpop is $(tstpop)")
-    sl = instream.snifflines(dlexucfg.logfile,tstpop,dlexuencl)
+    sl = instream.score_proclivity(dlexucfg.logfile,tstpop,match_margin, dlexuencl)
     println("sl is $(sl)")
     #println("dlexuencl is $(dlexuencl)")
     #println("dlexucfg logfile is $(dlexucfg)") 

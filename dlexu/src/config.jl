@@ -14,14 +14,15 @@ function getTOML(cfgfile::String)
     println("cfgfile is $(cfgfile)")
     println("DLEXU configuration TOML is being read from file : $(cfgfile)")
     if !(isfile(cfgfile))        
-        println("Error : Config file $(cfgfile) does not exist")
+        println("error : Config file $(cfgfile) does not exist")
         exit(8)
     else     
         try
            TomlParse = TOML.parsefile(cfgfile)
            println("TomlParse is $(TomlParse)")
         catch e
-           println("TOML parse error $(e)")
+           println("error : TOML parse error $(e)")
+           exit(8)
         end
     end    
     for (iKey, iValue) in TomlParse
@@ -39,7 +40,7 @@ function getTOML(cfgfile::String)
 
     # errors if ODD number (enforces pairs of enclosures)
     if !iseven(length(enclist)) 
-        println("Error : Enclosure list $(enclist) has ODD number of elements - must be EVEN")
+        println("error : enclosure list $(enclist) has ODD number of elements - must be EVEN")
         exit(8)
     end    
        

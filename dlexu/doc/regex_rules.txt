@@ -1,3 +1,9 @@
+#1 . round bracket [()]
+#2. square bracket [\[\]]
+
+    #nonslashrx = ["<", ">", "(", ")", "{", "}", ":", "\$", ".", "?","*", "+"]
+    #slashrx = ["[", "]", "/", "^", "\\", "|"]
+
 1 . round bracket [()]
 2. square bracket [\[\]]
 

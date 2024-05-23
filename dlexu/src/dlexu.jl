@@ -7,7 +7,7 @@ include("./gui.jl")
 
 
 const error_margin = 0.15
-const samplesize = 5000
+const maxobs = 5000
 const match_margin = 0.15
 
 # mainline here
@@ -16,8 +16,8 @@ function dlexu()
     println(ARGS[1])
     # configuration
     dlexucfg,dlexudates,dlexuencl = config.getTOML(ARGS[1])
-    # check - do we need to sample the file? based on the constant samplesize
-    tstpop = instream.calc_test_population(dlexucfg.logfile, samplesize) 
+    # check - do we need to sample the file based on the maximum observations?
+    tstpop = instream.calc_test_population(dlexucfg.logfile, maxobs) 
     println("tstpop is $(tstpop)")
     sl = instream.score_proclivity(dlexucfg.logfile,tstpop,match_margin, dlexuencl)
     println("sl is $(sl)")

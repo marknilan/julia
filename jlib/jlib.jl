@@ -9,7 +9,6 @@ using TimeZones, Dates
 
 
 # counts file rows, returns the count and the time taken
-
 function fcount(filename::String) 
         open(filename) do fh
         linecounter = 0
@@ -22,7 +21,6 @@ function fcount(filename::String)
 end
 
 # reads a file into buffer memory, determines processing timing and memory and displays record count
-
 function guagefile(filename::String)
     io = IOBuffer()
     f = open(filename)
@@ -45,7 +43,6 @@ end
 
 # given a string representing a line of the incoming file from a string vector
 # returns the propensity of the search as a floating number
-
 function char_propensity(strline, rx)
     global count = 0
     # println("char_propensity strline is $(typeof(strline))")

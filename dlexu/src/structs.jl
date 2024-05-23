@@ -40,16 +40,16 @@ Base.@kwdef mutable struct DlexuEncl
     enclpairs::Vector{Encl} = []
 end
 
-export EnclProb
-Base.@kwdef mutable struct EnclProb
+export EnclScore
+Base.@kwdef mutable struct EnclScore
     encl1::String = " "
     encl2::String = " "
     prob::Float64 = 0.0
 end
 
-export EnclScores
-Base.@kwdef mutable struct EnclScores
-    enclscores::Vector{EnclProb} = []
+export EnclProbs
+Base.@kwdef mutable struct EnclProbs
+    enclscores::Vector{EnclScore} = []
 end
 
 end #module

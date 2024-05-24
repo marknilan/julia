@@ -3,6 +3,7 @@ module config
 using TOML, StructTypes
 
 include("./structs.jl")
+include("./gui.jl")
 include("../../jlib/jlib.jl")
 
 # reads a TOML format file, gets dlexu program configuration 
@@ -19,7 +20,6 @@ function getTOML(cfgfile::String)
     else
         try
             TomlParse = TOML.parsefile(cfgfile)
-            println("\n    TOML read as follows: \n $(TomlParse)")
         catch e
             println("error : TOML parse error $(e)")
             exit(8)
@@ -45,9 +45,10 @@ function getTOML(cfgfile::String)
         )
         exit(8)
     end
-
+    # make list of enclosure pairs to search for
     dlexuencl = MakeEncl(enclist)
-
+    
+    gui.dispcfg(dlexucfg)
     return dlexucfg, dlexudates, dlexuencl
 end
 
@@ -66,8 +67,7 @@ function MakeEncl(enclist::Vector{String})::structs.DlexuEncl
         encl = structs.Encl()
 
     end
-    println("    Enclosures to test for are : $(dlexuencl)")
-
+      
     return dlexuencl
 end
 

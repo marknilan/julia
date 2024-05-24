@@ -3,6 +3,8 @@ module instream
 
 include("../../jlib/jlib.jl")
 include("./structs.jl")
+include("./gui.jl")
+
 
 #determines the test population to use for file sampling
 function calc_test_population(logfile::String, maxobs::Int64)
@@ -32,14 +34,19 @@ function score_proclivity(logfile::String,tstpop::Int64,
     # if below the sample size threshold use the whole file to determin propensity
     samplepopulation = collect(Iterators.take(eachline(logfile), tstpop))
     enclprobs = count_encl_occurrence(samplepopulation, dlexuencl)
-    println("\n    Enclosure probabilities found in sample population is : \n $(enclprobs)")
+    #println("\n    Enclosure probabilities found in sample population is : \n $(enclprobs)")
+    println(" \n   Enclosures probability results are : ")
+    for (index, value) in enumerate(enclprobs.enclscores)
+           println("    encl pair $index  $value.encl1 $value.encl2  probability=$value.prob")
+    end 
+    resp = gui.display_message("Do you wish to continue?")  
     return true
 
 end
 
 #NEEDS HANDLING FOR BACKSLASH
 # counts the enclosure pair's occurrences across the log sample population
-function count_encl_occurrence(samplepopulation::Int64, dlexuencl::Any)::structs.EnclProbs
+function count_encl_occurrence(samplepopulation, dlexuencl)::structs.EnclProbs
 
     samplesize = length(samplepopulation)
     if samplesize > 0

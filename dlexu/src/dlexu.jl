@@ -12,7 +12,7 @@ const match_margin = 0.15
 
 # mainline here
 function dlexu()
-    jlib.disptm("    dlexu began at")
+    jlib.disptm("    dlexu started")
     # configuration
     dlexucfg, dlexudates, dlexuencl = config.getTOML(ARGS[1])
     # check - do we need to sample the file based on the maximum observations?

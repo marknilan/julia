@@ -28,8 +28,12 @@ end
 
 #Determines the probabilities of enclosure pairs found in the log
 #sample population
-function score_proclivity(logfile::String,tstpop::Int64,
-                          match_margin::Float64,dlexuencl::Any) 
+function score_proclivity(
+    logfile::String,
+    tstpop::Int64,
+    match_margin::Float64,
+    dlexuencl::Any,
+)
     # create a cursor of log lines of the incoming file - or
     # if below the sample size threshold use the whole file to determin propensity
     samplepopulation = collect(Iterators.take(eachline(logfile), tstpop))
@@ -37,16 +41,14 @@ function score_proclivity(logfile::String,tstpop::Int64,
     println(" \n   Enclosures probability results are : ")
     darr = []
     for (index, value) in enumerate(enclprobs.enclscores)
-           if value.prob >= match_margin
-              println( "$(value.encl1)   $(value.encl2) =  $(value.prob) <=== USE")
-           else
-              println( "$(value.encl1)   $(value.encl2) =  $(value.prob) <=== REJECT")
-              push!(darr,index)
-           end   
+        if value.prob >= match_margin
+            println("$(value.encl1)   $(value.encl2) =  $(value.prob) <=== USE")
+        else
+            println("$(value.encl1)   $(value.encl2) =  $(value.prob) <=== REJECT")
+            push!(darr, index)
+        end
     end
-    b = deleteat!(enclprobs.enclscores, darr ) 
-    return b 
-    
+    return deleteat!(enclprobs.enclscores, darr)
 
 end
 

@@ -3,6 +3,7 @@ include("../../jlib/jlib.jl")
 include("./config.jl")
 include("./instream.jl")
 include("./structs.jl")
+include("./datefmt.jl")
 include("./gui.jl")
 
 
@@ -19,9 +20,8 @@ function dlexu()
     tstpop = instream.calc_test_population(dlexucfg.logfile, maxobs)
     enclprobs = instream.score_proclivity(dlexucfg.logfile, tstpop, match_margin, dlexuencl)
     println("enclprobs is $(enclprobs)")
-    #println("dlexuencl is $(dlexuencl)")
-    #println("dlexucfg logfile is $(dlexucfg)") 
-    #println("dlexudates is $(dlexudates) ")
+    datelookup = datefmt.make_datelookup(dlexudates)
+    println("datelookup is $(datelookup) ")
     #t = gui.DlexUI()
 end
 #call it

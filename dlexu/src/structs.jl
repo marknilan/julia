@@ -19,13 +19,20 @@ end
 #configuration file. data is held in the "dateformats" TOML key as a filename and path
 #of a specifically formatted CSV file (note must be ";" semicolon delimited ONLY)
 
-export DateLookup
-Base.@kwdef mutable struct DateLookup
+export DlexuDate
+Base.@kwdef mutable struct DlexuDate
     date_template::String = " "
     date_desc::String = " "
     date_key::String = " "
     date_example::String = " "
+    julia_regex::String = " "
 end
+
+export DateLookup
+Base.@kwdef mutable struct DateLookup
+    dlexudates::Vector{DlexuDate} = []
+end
+
 
 #An enclosure pair, a pair of strings with data held within its
 #boundaries on a log line 

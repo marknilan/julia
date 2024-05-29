@@ -1,5 +1,6 @@
 module structs
 
+# PROGRAM CONFIG
 #configuration TOML of the program. Fed from dlexu command line configuration parameter
 #example dlexu <path to file><delimiter><rlexu config file name>
 
@@ -15,6 +16,7 @@ Base.@kwdef mutable struct DlexuCfg
     datefmt::String = " "
 end
 
+# DATES
 #date formats lookup CSV of the program. Fed from [date] section of the dlexu TOML
 #configuration file. data is held in the "dateformats" TOML key as a filename and path
 #of a specifically formatted CSV file (note must be ";" semicolon delimited ONLY)
@@ -33,7 +35,26 @@ Base.@kwdef mutable struct DateLookup
     dlexudates::Vector{DlexuDate} = []
 end
 
+#A date simililarity score, that is the probability of each date format from 
+#data sourced from the supplied date formats file as a lookup from data found  
+#in the log file population sample divided by the sample size 
+export DateScore
+Base.@kwdef mutable struct DateScore
+    date_template::String = " "
+    julia_regex::String = " "
+    prob::Float64 = 0.0
+end
 
+#A list of date format scores which will be used to determine
+#whether the date format will be searched for in the log population given 
+# provided the probabilty is greater than the match margin 
+export DateProbs
+Base.@kwdef mutable struct DateProbs
+    datescores::Vector{DateScore} = []
+end
+
+
+# ENCLOSURES
 #An enclosure pair, a pair of strings with data held within its
 #boundaries on a log line 
 export Encl

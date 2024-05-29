@@ -21,7 +21,9 @@ function dlexu()
     enclprobs = instream.score_proclivity(dlexucfg.logfile, tstpop, match_margin, dlexuencl)
     println("enclprobs is $(enclprobs)")
     datelookup = datefmt.make_datelookup(dlexudates)
-    println("datelookup is $(datelookup) ")
+    #println("datelookup is $(datelookup) ")
+    dateprobs = datefmt.date_proclivity(dlexucfg.logfile,tstpop,match_margin,datelookup)
+    println("dateprobs is $(dateprobs)")
     #t = gui.DlexUI()
 end
 #call it

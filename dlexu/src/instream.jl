@@ -35,7 +35,7 @@ function score_proclivity(
     dlexuencl::Any,
 )
     # create a cursor of log lines of the incoming file - or
-    # if below the sample size threshold use the whole file to determin propensity
+    # if below the sample size threshold use the whole file to determine propensity
     samplepopulation = collect(Iterators.take(eachline(logfile), tstpop))
     enclprobs = count_encl_occurrence(samplepopulation, dlexuencl)
     println(" \n   Enclosures probability results are : ")
@@ -78,7 +78,7 @@ function count_encl_occurrence(samplepopulation, dlexuencl)::structs.EnclProbs
             push!(enclprobs.enclscores, enclscore)
         end
     else
-        println("error : sample size is 0 observations - aborting propensity calculation")
+        println("error : sample size is 0 observations - aborting enclosure propensity calculation")
         exit(8)
     end
     return enclprobs

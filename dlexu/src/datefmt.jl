@@ -38,7 +38,7 @@ function date_proclivity(
     logfile::String,
     tstpop::Int64,
     match_margin::Float64,
-    datelookup::Any,
+    datelookup::structs.DateLookup
 )::Bool
     
     # create a cursor of log lines of the incoming file - or
@@ -49,18 +49,21 @@ function date_proclivity(
     return true
 end
 
-function count_date_occurrence(samplepopulation, datelookup)::Bool
+function count_date_occurrence(samplepopulation, datelookup::structs.DateLookup)::Bool
 
     samplesize = length(samplepopulation)
     if samplesize > 0
        dateprobs = structs.DateProbs()
-       for datefmtrow in datelookup
-          length(findall(contains(row.julia_regex, samplepopulation)))        
-       end 
-    else
-        println("error : sample size is 0 observations - aborting date propensity calculation")
-        exit(8)
-    end   
+       println("type = $(typeof(datelookup))")
+       for i in eachindex(datelookup.dlexudates)
+          c = length(findall(contains(datelookup.dlexudates[i].julia_regex), samplepopulation))
+          println("cnt is $(c) ") 
+       end     
+    end 
+    #else
+    #    println("error : sample size is 0 observations - aborting date propensity calculation")
+    #    exit(8)
+    #end   
     
     return true
 end    

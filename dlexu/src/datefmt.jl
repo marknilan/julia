@@ -56,8 +56,14 @@ function count_date_occurrence(samplepopulation, datelookup::structs.DateLookup)
        dateprobs = structs.DateProbs()
        println("type = $(typeof(datelookup))")
        for i in eachindex(datelookup.dlexudates)
-          c = length(findall(contains(datelookup.dlexudates[i].julia_regex), samplepopulation))
-          println("cnt is $(c) ") 
+          rx = Regex(datelookup.dlexudates[i].julia_regex)
+          for logline in enumerate(samplepopulation)
+              c = length(collect(eachmatch(rx,logline[2])))
+              if c > 0 
+                 println("cnt is $(c) ") 
+              end
+          end  
+          
        end     
     end 
     #else

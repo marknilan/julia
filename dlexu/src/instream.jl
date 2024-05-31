@@ -39,7 +39,8 @@ function score_proclivity(
     samplepopulation = collect(Iterators.take(eachline(logfile), tstpop))
     enclprobs = count_encl_occurrence(samplepopulation, dlexuencl)
     println(" \n   Enclosures probability results are : ")
-    darr = []
+    # delete index map
+    darr = [] 
     for (index, value) in enumerate(enclprobs.enclscores)
         if value.prob >= match_margin
             println("$(value.encl1)   $(value.encl2) =  $(value.prob) <=== USE")
@@ -48,6 +49,8 @@ function score_proclivity(
             push!(darr, index)
         end
     end
+    # return only those (with high probability) that exceed the match 
+    # margin threshold constant - uses delete map above
     return deleteat!(enclprobs.enclscores, darr)
 
 end

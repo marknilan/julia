@@ -1,6 +1,7 @@
 module datefmt
 
 using CSV
+using StringDistances
 
 include("./structs.jl")
 
@@ -57,11 +58,13 @@ function count_date_occurrence(samplepopulation, datelookup::structs.DateLookup)
        println("type = $(typeof(datelookup))")
        for i in eachindex(datelookup.dlexudates)
           rx = Regex(datelookup.dlexudates[i].julia_regex)
+          r = 1
           for logline in enumerate(samplepopulation)
               c = length(collect(eachmatch(rx,logline[2])))
-              if c > 0 
-                 println("cnt is $(c) ") 
+              if c > 0  
+                 println("row is $(r) cnt is $(c) matched on $(datelookup.dlexudates[i].date_template)") 
               end
+              r = r + 1
           end  
           
        end     

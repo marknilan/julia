@@ -1,7 +1,6 @@
 module datefmt
 
 using CSV
-using StringDistances
 
 include("./structs.jl")
 
@@ -40,41 +39,53 @@ function date_proclivity(
     tstpop::Int64,
     match_margin::Float64,
     datelookup::structs.DateLookup
-)::Bool
+)
     
     # create a cursor of log lines of the incoming file - or
     # if below the sample size threshold use the whole file to determine propensity
     samplepopulation = collect(Iterators.take(eachline(logfile), tstpop))
-    cd = count_date_occurrence(samplepopulation, datelookup)
-    println(cd)
-    return true
+    dateprobs = calc_date_probability(samplepopulation, datelookup)
+    darr = []
+    for (index, value) in enumerate(dateprobs.datescores)
+        if value.prob >= match_margin
+            println("$(value.date_template)  =  $(value.prob) <=== USE")
+        else
+            println("$(value.date_template)  =  $(value.prob) <=== REJECT")
+            push!(darr, index)
+        end
+    end
+    # return only those (with high probability) that exceed the match 
+    # margin threshold constant - uses delete map above
+
+    return deleteat!(dateprobs.datescores, darr)
 end
 
-function count_date_occurrence(samplepopulation, datelookup::structs.DateLookup)::Bool
+function calc_date_probability(samplepopulation, datelookup::structs.DateLookup)::structs.DateProbs
 
+    datescore = structs.DateScore()
+    dateprobs = structs.DateProbs()
     samplesize = length(samplepopulation)
     if samplesize > 0
        dateprobs = structs.DateProbs()
-       println("type = $(typeof(datelookup))")
        for i in eachindex(datelookup.dlexudates)
+          datecount = 0
           rx = Regex(datelookup.dlexudates[i].julia_regex)
-          r = 1
           for logline in enumerate(samplepopulation)
-              c = length(collect(eachmatch(rx,logline[2])))
-              if c > 0  
-                 println("row is $(r) cnt is $(c) matched on $(datelookup.dlexudates[i].date_template)") 
-              end
-              r = r + 1
-          end  
-          
+              datecount = datecount + length(collect(eachmatch(rx,logline[2])))          
+          end
+          if datecount > 0
+             datescore.date_template = datelookup.dlexudates[i].date_template
+             datescore.julia_regex = datelookup.dlexudates[i].julia_regex
+             datescore.prob = Float64(datecount / samplesize) 
+          end 
+          push!(dateprobs.datescores, datescore)
        end     
-    end 
-    #else
-    #    println("error : sample size is 0 observations - aborting date propensity calculation")
-    #    exit(8)
-    #end   
+    else
+        println("error : sample size is 0 observations - aborting date propensity calculation")
+        exit(8)
+    end   
     
-    return true
+    return dateprobs
 end    
 
 end # module

@@ -5,6 +5,8 @@ include("./instream.jl")
 include("./structs.jl")
 include("./datefmt.jl")
 include("./gui.jl")
+include("./tailorlog.jl")
+
 
 
 const error_margin = 0.15
@@ -24,7 +26,10 @@ function dlexu()
     #println("datelookup is $(datelookup) ")
     dateprobs = datefmt.date_proclivity(dlexucfg.logfile,tstpop,match_margin,datelookup)
     println("dateprobs is $(dateprobs)")
+    # process log tailoring output to CSV
+    rs = tailorlog.apply_log_chng(enclprobs,dlexucfg)
     #t = gui.DlexUI()
+    jlib.disptm("    dlexu ended")
 end
 #call it
 dlexu()

@@ -1,0 +1,73 @@
+import structs
+import vlibrary
+
+// tailors the log ready for output
+pub fn apply_log_chng(pscores structs.Propensityscores, dlexucfg structs.Cfgstruct) []string {
+	// enclpairs := split_enclpairs(pscores)
+	encledits := encl_edits(pscores, dlexucfg)
+	mut newcontent := []string{}
+	mut content := vlibrary.file_buffered_reader(dlexucfg.logfile)
+	for val in content {
+		println(val)
+	}
+	for mut logline in content {
+		// logline = logline.trim_space()
+		logline = replace_enclosures(logline.trim_space(), encledits)
+		mut dlmline := logline.split(dlexucfg.indelm)
+		for i := 0; i < dlmline.len; i += 1 {
+			mut colval := dlmline[i].trim(' ')
+			colval = replace_quotes(colval, dlexucfg)
+			// colval = replace_enclosures(colval, encledits)
+			dlmline[i] = colval
+		}
+		logline = dlmline.join(dlexucfg.delimiter)
+		newcontent << logline
+	}
+
+	return newcontent
+}
+
+// make the list of enclosures meeting propensity thresholds searchable
+fn split_enclpairs(pscores structs.Propensityscores) []string {
+	mut vals := []string{}
+	for enclpair in pscores.propscores {
+		spl := enclpair.encl.split(' ')
+		vals << [spl[0], spl[1]]
+	}
+	println(vals)
+	return vals
+}
+
+// makes a lookup list of enclosures meeting propensity thresholds used for replacement
+fn encl_edits(pscores structs.Propensityscores, dlexucfg structs.Cfgstruct) []string {
+	mut vals := []string{}
+	for enclpair in pscores.propscores {
+		spl := enclpair.encl.split(' ')
+		vals << [spl[0], dlexucfg.indelm, spl[1], dlexucfg.indelm]
+	}
+	return vals
+}
+
+// applied at the COLUMN level of log tailoring
+// replace quotes under various scenarios
+fn replace_quotes(colval string, dlexucfg structs.Cfgstruct) string {
+	mut newcolval := colval
+	if dlexucfg.inquote != '' && dlexucfg.quotes == '' {
+		newcolval = colval.replace(dlexucfg.inquote, '')
+	}
+	if dlexucfg.inquote != '' && dlexucfg.quotes != '' {
+		newcolval = colval.replace(dlexucfg.inquote, dlexucfg.quotes)
+	}
+	if dlexucfg.inquote == '' && dlexucfg.quotes != '' {
+		newcolval = dlexucfg.quotes + colval + dlexucfg.quotes
+	}
+	return newcolval
+}
+
+// applied at the LINE level of the log tailoring
+// splits the line at enclosure points, inserts indelm delimiters
+fn replace_enclosures(colval string, encledits []string) string {
+	mut newcolval := colval
+	newcolval = colval.replace_each(encledits)
+	return newcolval
+}

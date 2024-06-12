@@ -37,6 +37,15 @@ function getTOML(cfgfile::String)
         end
 
     end
+    # errors if there is not incoming delimiter if a log is "value""value" then use 
+    # delimiter = \"\" as the delimiter (decodes to "") you just cannot leave this null
+
+    if length(dlexucfg.indelm) < 1
+        println(
+            "error : you must specify an incoming logical delimiting string for the log"
+        )
+        exit(8)
+    end    
 
     # errors if ODD number (enforces pairs of enclosures)
     if !iseven(length(enclist))

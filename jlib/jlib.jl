@@ -118,9 +118,11 @@ function delimited_array(str::String,encl1::String,encl2::String)
         l = findnext(encl2, str,occ)
         ds = ""
         if !(f == nothing) && !(l == nothing)                 
-           ds = SubString(str, f[1] + 1, l[1] - 1)
-           occ = l[1] + 1                  
-           push!(arr,ds)
+           ds = string(SubString(str, f[1] + 1, l[1] - 1))
+           occ = l[1] + 1
+           if length(ds) > 0                  
+              push!(arr,ds)
+           end   
         else   
            break
         end         
@@ -270,5 +272,15 @@ function open_in_default_browser(url::AbstractString)::Bool
     end
 end
 
+# creates a delimiter boundary if given a delimiter and quoted values
+# eg "val","val" or 'val';'val' would give delimiters "\",\"" and "','" 
 
-end # module lib
+function create_compound_delim(qte,dlm)::String
+    s = dlm
+    if length(qte) > 0 && !(qte == " ")
+        s = string(qte,dlm,qte)
+    end
+    return s    
+end
+
+end # module 

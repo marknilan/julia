@@ -47,11 +47,13 @@ function date_proclivity(
     dateprobs = calc_date_probability(samplepopulation, datelookup)
     darr = []
     for (index, value) in enumerate(dateprobs.datescores)
-        if value.prob >= match_margin
-            println("$(value.date_template)  =  $(value.prob) <=== USE")
-        else
-            println("$(value.date_template)  =  $(value.prob) <=== REJECT")
-            push!(darr, index)
+        if value.prob > 0.0
+           if value.prob >= match_margin
+              println("$(value.date_template)  =  $(value.prob) <=== USE")
+           else
+              println("$(value.date_template)  =  $(value.prob) <=== REJECT")
+              push!(darr, index)
+           end
         end
     end
     # return only those (with high probability) that exceed the match 

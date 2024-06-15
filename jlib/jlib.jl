@@ -82,18 +82,14 @@ end
 function delimited_substring(strline, fst, lst)    
     
     esl = strline
-
     f = findfirst(fst,strline)
-    println("f = $f")
     if !(f === nothing)
        l = findnext(lst,strline,max(f[1],1))
-       println("l = $l")
        if !(l === nothing)          
           esl = SubString(strline, max(f[1] + 1,1), max(l[1] - 1,1))
           println("strline is now $esl")
        end
     end
-    
     return esl
 
 end
@@ -105,34 +101,6 @@ function textbetween(text::AbstractString, startdlm::AbstractString, enddlm::Abs
     if iszero(startind) || iszero(endind) return "" end
     return text[startind:endind]
 end
-
-#returns an array of strings with enclosures removed
-
-function delimited_array(str::String,encl1::String,encl2::String)
- 
-    arr = []
-    occ = 1
-
-    while true               
-        f = findnext(encl1, str,occ)
-        l = findnext(encl2, str,occ)
-        ds = ""
-        if !(f == nothing) && !(l == nothing)                 
-           ds = string(SubString(str, f[1] + 1, l[1] - 1))
-           occ = l[1] + 1
-           if length(ds) > 0                  
-              push!(arr,ds)
-           end   
-        else   
-           break
-        end         
-    end   
-
-    return arr
-    
-end
-
-
 
 # returns a character string from an OS call to determine slash direction eg  
 

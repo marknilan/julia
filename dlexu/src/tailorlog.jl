@@ -33,13 +33,17 @@ function apply_log_chng(enclprobs, dlexucfg)::Bool
                         enclprobs[i].encl2,
                     )
                     if length(arr) > 0
-                        println("length was $(length(arr)) arr was $(arr)")
+                        # println("length was $(length(arr)) arr was $(arr)")
                         push!(holda, arr)
-                        strcol = replace(strcol, r"""$arr""" => "")
-                        
+                       
                     end
                 end
-                println("holda is now $(holda)")
+                if length(holda) > 0
+                    println("strcol before is $(strcol) and holda is $(holda)")
+                   strcol = replace(strcol, r"""$arr""" => "")
+                   println("strcol is now $(strcol)")
+                end   
+               # println("holda is now $(holda)")
         
             end
       

@@ -13,6 +13,7 @@ function apply_log_chng(enclprobs, dlexucfg)::Bool
     end
     open(dlexucfg.logfile) do f
         line = 0
+        strcol = ""
         while !eof(f)
             s = string(
                 rstrip(
@@ -24,29 +25,19 @@ function apply_log_chng(enclprobs, dlexucfg)::Bool
             s = check_qte_delm(s, dlexucfg.delimiter)
             strarray =
                 split(s, jlib.create_compound_delim(dlexucfg.inquote, dlexucfg.indelm))
-            for strcol in strarray
-                holda = []
+            for strcol in strarray       
                 for i in eachindex(enclprobs)
-                    arr = delimited_array(
-                        string(strcol),
-                        enclprobs[i].encl1,
-                        enclprobs[i].encl2,
-                    )
-                    if length(arr) > 0
-                        # println("length was $(length(arr)) arr was $(arr)")
-                        push!(holda, arr)
-                       
-                    end
-                end
-                if length(holda) > 0
-                    println("strcol before is $(strcol) and holda is $(holda)")
-                   strcol = replace(strcol, r"""$arr""" => "")
-                   println("strcol is now $(strcol)")
-                end   
-               # println("holda is now $(holda)")
-        
+                    println("strcol was $(strcol)")
+                    r1 = enclprobs[i].encl1
+                    println("r1 is $(r1)")
+                    r2 = enclprobs[i].encl2
+                    println("r2 is $(r2)")
+                    strcol = replace(strcol, r1 => dlexucfg.delimiter)
+                    strcol = replace(strcol, r2 => dlexucfg.delimiter)
+                    println("strcol is now $(strcol)")
+                end               
             end
-      
+            
             line += 1
         end
         close(f)

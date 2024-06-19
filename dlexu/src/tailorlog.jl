@@ -27,9 +27,9 @@ function apply_log_chng(enclprobs, dlexucfg)::Bool
                 split(s, jlib.create_compound_delim(dlexucfg.inquote, dlexucfg.indelm))
             for strcol in strarray       
                 for i in eachindex(enclprobs)
-                    f = findfirst(enclprobs[i].encl1,strcol)
-                    if f != nothing                    
-                        println("f was $(f)")
+                    d = findfirst(enclprobs[i].encl1,strcol)
+                    if d != nothing                    
+                        println("f was $(d)")
                     end    
                     #before = strcol[1:f[1]-1]
                     #println("before was $(before)")

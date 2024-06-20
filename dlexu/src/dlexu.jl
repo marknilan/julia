@@ -28,6 +28,9 @@ function dlexu()
     println("dateprobs is $(dateprobs)")
     # process log tailoring output to CSV
     rs = tailorlog.apply_log_chng(enclprobs,dlexucfg)
+    for value in rs
+       println(value)
+    end    
     #t = gui.DlexUI()
     jlib.disptm("    dlexu ended")
 end

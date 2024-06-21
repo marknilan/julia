@@ -1,7 +1,6 @@
 module tailorlog
 
 include("../../jlib/jlib.jl")
-include("./structs.jl")
 
 # read log apply changes tailor the string array (log lines)
 function apply_log_chng(enclprobs, dlexucfg)::Vector{String}
@@ -42,7 +41,11 @@ function apply_log_chng(enclprobs, dlexucfg)::Vector{String}
                        strcol = replace(strcol, enclprobs[i].encl2 => dlexucfg.delimiter)
                     end   
                 end    
-                strarray[idx] = strcol
+                if occursin(dlexucfg.delimiter) == true || idx == length(strarray)
+                   strarray[idx] = strcol
+                else
+                   strarray[idx] = strcol * dlexucfg.delimiter   
+                end   
                 idx = idx + 1           
             end            
             line += 1

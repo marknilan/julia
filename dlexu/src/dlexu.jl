@@ -6,6 +6,7 @@ include("./structs.jl")
 include("./datefmt.jl")
 include("./gui.jl")
 include("./tailorlog.jl")
+include("./tailordates.jl")
 
 
 
@@ -21,16 +22,19 @@ function dlexu()
     # check - do we need to sample the file based on the maximum observations?
     tstpop = instream.calc_test_population(dlexucfg.logfile, maxobs)
     enclprobs = instream.score_proclivity(dlexucfg.logfile, tstpop, match_margin, dlexuencl)
-    println("enclprobs is $(enclprobs)")
+    #println("enclprobs is $(enclprobs)")
     datelookup = datefmt.make_datelookup(dlexudates)
     #println("datelookup is $(datelookup) ")
     dateprobs = datefmt.date_proclivity(dlexucfg.logfile,tstpop,match_margin,datelookup)
-    println("dateprobs is $(dateprobs)")
+    #println("dateprobs is $(dateprobs)")
     # process log tailoring output to CSV
-    rs = tailorlog.apply_log_chng(enclprobs,dlexucfg)
-    for value in rs
-       println(value)
-    end    
+    outv = tailorlog.apply_log_chng(enclprobs,dlexucfg)
+    outv = tailordates.convert_dates(outv,dateprobs,dlexucfg) 
+
+    #for value in rs
+    #   println(value)
+    #end    
+
     #t = gui.DlexUI()
     jlib.disptm("    dlexu ended")
 end

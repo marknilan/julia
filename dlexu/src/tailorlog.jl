@@ -23,7 +23,6 @@ function apply_log_chng(enclprobs, dlexucfg)::Vector{String}
             )
             s = check_qte_delm(s, dlexucfg.quotes)
             s = check_qte_delm(s, dlexucfg.delimiter)
-            println(s)
             strarray =
                 split(s, jlib.create_compound_delim(dlexucfg.inquote, dlexucfg.indelm))
             idx = 1

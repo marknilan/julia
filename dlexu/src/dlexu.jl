@@ -7,6 +7,7 @@ include("./datefmt.jl")
 include("./gui.jl")
 include("./tailorlog.jl")
 include("./tailordates.jl")
+include("./outstream.jl")
 
 
 
@@ -29,12 +30,9 @@ function dlexu()
     #println("dateprobs is $(dateprobs)")
     # process log tailoring output to CSV
     outv = tailorlog.apply_log_chng(enclprobs,dlexucfg)
-    outv = tailordates.convert_dates(outv,dateprobs,dlexucfg) 
-
-    for value in outv
-       println(value)
-    end    
-
+    outv = tailordates.convert_dates(outv,dateprobs,dlexucfg)
+    # output to logfile name timestamped CSV file in outdir directory
+    outstream.make_output(outv,dlexucfg)
     #t = gui.DlexUI()
     jlib.disptm("    dlexu ended")
 end

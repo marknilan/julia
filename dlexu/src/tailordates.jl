@@ -1,39 +1,33 @@
 module tailordates
 
-include("./structs.jl")
 using Dates
 
-function convert_dates(outv::Vector{String},dateprobs,dlexucfg)::Vector{String}
+# tries all data looking for values representing dates, converts dates to that
+# given in the dlexu configuration TOML file
+function convert_dates(invct::Vector{String}, dateprobs, dlexucfg)::Vector{String}
 
-   df = DateFormat("y-m-d");
+    outv::Vector{String} = []
+    if length(dlexucfg.datefmt) > 0
+        for s in invct
+            strarray = split(s, dlexucfg.delimiter)
+            idx = 0
+            for column in strarray
+                idx = idx + 1
+                for i in eachindex(dateprobs)
+                    try
+                        df = DateFormat(dateprobs[i].date_template)
+                        dt = Date(column, df)
+                        strarray[idx] = Dates.format(dt, dlexucfg.datefmt)
+                    catch
+                        continue
+                    end
+                end
+            end
+            push!(outv, join(strarray,dlexucfg.delimiter))
+        end
+    end
 
-   dt = Date("2015-01-01",df)
-
-   for s in outv
-       strarray = split(s, dlexucfg.delimiter)
-       for column in strarray    
-          for i in eachindex(dateprobs) 
-              println("date template is $(dateprobs[i].date_template)")
-              df = DateFormat("$(dateprobs[i].date_template)");
-              try 
-                 dt = Date(column,df)
-                 println("dt is $(dt)")
-              catch
-                 continue 
-              end
-             
-              
-          end
-       end     
-   end   
-    
-
-   for value in outv
-       println(value)
-   end 
-
-   return outv
-end	
-
+    return outv
+end
 
 end # module

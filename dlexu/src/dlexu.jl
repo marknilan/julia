@@ -31,9 +31,9 @@ function dlexu()
     outv = tailorlog.apply_log_chng(enclprobs,dlexucfg)
     outv = tailordates.convert_dates(outv,dateprobs,dlexucfg) 
 
-    #for value in rs
-    #   println(value)
-    #end    
+    for value in outv
+       println(value)
+    end    
 
     #t = gui.DlexUI()
     jlib.disptm("    dlexu ended")

@@ -30,6 +30,7 @@ function make_datelookup(dlexudates::String)::structs.DateLookup
         )
         push!(datelookup.dlexudates, dlexudate)
     end
+   
     return datelookup
 
 end

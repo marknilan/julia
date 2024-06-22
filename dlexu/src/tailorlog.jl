@@ -25,31 +25,31 @@ function apply_log_chng(enclprobs, dlexucfg)::Vector{String}
             s = check_qte_delm(s, dlexucfg.delimiter)
             println(s)
             strarray =
-                split(s, jlib.create_compound_delim(dlexucfg.inquote, dlexucfg.indelm))   
-            idx = 1    
-            for strcol in strarray       
+                split(s, jlib.create_compound_delim(dlexucfg.inquote, dlexucfg.indelm))
+            idx = 1
+            for strcol in strarray
                 for i in eachindex(enclprobs)
-                    st = findfirst(enclprobs[i].encl1,strcol)                    
-                    nd = findlast(enclprobs[i].encl2,strcol)
-                    if isnothing(st) || isnothing(nd) 
+                    st = findfirst(enclprobs[i].encl1, strcol)
+                    nd = findlast(enclprobs[i].encl2, strcol)
+                    if isnothing(st) || isnothing(nd)
                         if idx < length(strarray)
-                           strarray[idx] = strarray[idx] * dlexucfg.delimiter
-                        end   
+                            strarray[idx] = strarray[idx] * dlexucfg.delimiter
+                        end
                         continue
-                    else    
-                       strcol = replace(strcol, enclprobs[i].encl1 => dlexucfg.delimiter)
-                       strcol = replace(strcol, enclprobs[i].encl2 => dlexucfg.delimiter)
-                    end   
-                end    
+                    else
+                        strcol = replace(strcol, enclprobs[i].encl1 => dlexucfg.delimiter)
+                        strcol = replace(strcol, enclprobs[i].encl2 => dlexucfg.delimiter)
+                    end
+                end
                 if occursin(dlexucfg.delimiter) == true || idx == length(strarray)
-                   strarray[idx] = strcol
+                    strarray[idx] = strcol
                 else
-                   strarray[idx] = strcol * dlexucfg.delimiter   
-                end   
-                idx = idx + 1           
-            end            
+                    strarray[idx] = strcol * dlexucfg.delimiter
+                end
+                idx = idx + 1
+            end
             line += 1
-            push!(outv,join(strarray))
+            push!(outv, join(strarray))
         end
         close(lf)
     end

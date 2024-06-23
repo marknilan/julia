@@ -5,7 +5,6 @@
 include("../../jlib/jlib.jl")
 include("./gui.jl")
 
-
 #determines the test population to use for file sampling
 function calc_test_population(logfile::String, maxobs::Int64)
 

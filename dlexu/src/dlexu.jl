@@ -1,17 +1,12 @@
 #generic julia code module
 include("../../jlib/jlib.jl")
-#include("./config.jl")
-#include("./instream.jl")
+
 include("./structs.jl")
 include("./startup.jl")
 include("./probability.jl")
 include("./gui.jl")
 include("./tailor.jl")
-#include("./tailorlog.jl")
-#include("./tailordates.jl")
 include("./outstream.jl")
-
-
 
 const error_margin = 0.15
 const maxobs = 5000
@@ -19,6 +14,9 @@ const match_margin = 0.15
 
 # mainline here
 function dlexu()
+    t = gui.DlexUI()
+    
+    #gui.display_message("DLEXU the Devops Log eXtract Utility")
     jlib.disptm("    dlexu started")
     # configuration
     dlexucfg, dlexudates, dlexuencl = Startup.getTOML(ARGS[1])
@@ -34,7 +32,6 @@ function dlexu()
     outv = Tailor.convert_dates(outv, dateprobs, dlexucfg)
     # output to logfile name timestamped CSV file in outdir directory
     outstream.make_output(outv, dlexucfg)
-    #t = gui.DlexUI()
     jlib.disptm("    dlexu ended")
 end
 #call it

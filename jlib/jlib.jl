@@ -229,7 +229,7 @@ function open_in_default_browser(url::AbstractString)::Bool
                 Base.run(`$browser $url`)
                 return true
             else
-                @warn "Unable to find `xdg-open`. Try `apt install xdg-open`"
+                @warn "Unable to start browser."
                 return false
             end
         else

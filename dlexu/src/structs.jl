@@ -16,6 +16,7 @@ Base.@kwdef mutable struct DlexuCfg
     datefmt::String = " "
 end
 
+
 # DATES
 #date formats lookup CSV of the program. Fed from [date] section of the dlexu TOML
 #configuration file. data is held in the "dateformats" TOML key as a filename and path
@@ -86,4 +87,4 @@ Base.@kwdef mutable struct EnclProbs
     enclscores::Vector{EnclScore} = []
 end
 
-end #module
+end # module

@@ -1,4 +1,4 @@
-module tailordates
+# part of the tailor module 
 
 using Dates
 
@@ -23,11 +23,11 @@ function convert_dates(invct::Vector{String}, dateprobs, dlexucfg)::Vector{Strin
                     end
                 end
             end
-            push!(outv, join(strarray,dlexucfg.delimiter))
+            push!(outv, join(strarray, dlexucfg.delimiter))
         end
     end
 
     return outv
 end
 
-end # module
+

@@ -1,4 +1,4 @@
-module config
+# part of the Startup module
 
 using TOML, StructTypes
 
@@ -79,5 +79,3 @@ function MakeEncl(enclist::Vector{String})::structs.DlexuEncl
       
     return dlexuencl
 end
-
-end #module

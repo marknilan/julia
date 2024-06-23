@@ -1,4 +1,4 @@
-module tailorlog
+# part of the tailor module 
 
 include("../../jlib/jlib.jl")
 
@@ -64,5 +64,4 @@ function check_qte_delm(s::String, srch::String)::String
     end
     return s
 end
-
-end # module 
+ 

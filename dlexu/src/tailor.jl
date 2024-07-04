@@ -1,6 +1,6 @@
 module Tailor
 
-# export, using, import statements are usually here; we discuss these below
+# tailors the log data and converts the date data within the log
 
 include("tailorlog.jl")
 include("tailordates.jl")

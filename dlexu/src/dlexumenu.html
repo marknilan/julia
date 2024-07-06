@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>New Member Registration</title>
+    <title>Julia Based Log Extract Utlity</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
@@ -44,7 +44,7 @@
           .banner {
           position: relative;
           height: 100px;
-          background-image: url("/uploads/media/default/0001/02/c1504011491c4e04e5158b63a27a4ea654b03ed1.jpeg");
+          background-image: url("P1010930.JPG");
           background-size: cover;
           display: flex;
           justify-content: center;
@@ -164,6 +164,16 @@
             margin: 20px 0;
           }
     </style>
+                <script>
+
+	            window.onbeforeunload = function() {
+				    return "Are you sure you want to leave DLEXU?";
+	            };
+
+	            function closePage() {
+				    window.close();
+	            }
+            </script>
 </head>
 
 <body>
@@ -171,7 +181,7 @@
     <div class="testbox">
         <form action="/">
             <div class="banner">
-                <h1>D L E X U - the Devops Log eXtract Utility</h1>
+                <h1>D L E X U - the Devops Log EXtract Utility</h1>
             </div>
 
             <div class="row">
@@ -291,16 +301,7 @@
                 <button type="continue" href="/">Continue</button>
             </div>
 
-            <script>
 
-            window.onbeforeunload = function() {
-			    return "Are you sure you want to leave this page?";
-            };
-
-            function closePage() {
-			    window.close();
-            }
-            </script>
         </form>
     </div>
 </body>

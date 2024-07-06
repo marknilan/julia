@@ -14,7 +14,7 @@ const match_margin = 0.15
 
 # mainline here
 function dlexu()
-    t = gui.DlexUI()
+    gui.DlexUI()
     
     #gui.display_message("DLEXU the Devops Log eXtract Utility")
     jlib.disptm("    dlexu started")

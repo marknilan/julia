@@ -2,10 +2,10 @@ module outstream
 
 include("../../jlib/jlib.jl")
 
-using CSV
-using DataFrames
+#using CSV
+#using DataFrames
 #using Tables
-#using DelimitedFiles
+using DelimitedFiles
 using Dates
 
 function make_output(outv::Vector{String}, dlexucfg)::Bool
@@ -16,22 +16,23 @@ function make_output(outv::Vector{String}, dlexucfg)::Bool
     ofile = "$(fn)_$(Dates.format(now(), "yyyy-mm-dd_HH-MM-SS")).csv"
     println("    Dlexu will write CSV output to $(ofile)")
     for line in outv
-        try  
-           out_array = split(line,";")
-           println(out_array)
-           CSV.write(
-                 ofile,out_array,
-                 writeheader=false,
-                 append=true,
-                 delim=dlexucfg.delimiter,
-                 quotechar=only(dlexucfg.quotes),
-                 quotestrings=true,
-           )
-        catch e
-            println("error : $(e) \n Unable to write to CSV file $(ofile)")
-            exit(8)
-        end    
-    end     
+        a = split(line,dlexucfg.delimiter)
+        println(a)    
+    end
+    #f = open(ofile, "w")
+    #for line in outv 
+    #      out_arr = split(line)
+    #      for i in eachindex(out_arr)
+    #        try
+    #           print(f, dlexucfg.quotes * out_arr[i] * dlexucfg.quotes)
+    #        catch e
+    #           println("error : $(e) \n Unable to write to CSV file $(ofile)")
+    #           exit(8)
+    #        end       
+    #      end
+    #end 
+    #close(f)
+    
     #try
         #writedlm(ofile, outv, only(dlexucfg.delimiter))
     #    CSV.write(ofile, DataFrame(outv), delim=only(dlexucfg.delimiter))

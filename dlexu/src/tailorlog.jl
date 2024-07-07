@@ -27,6 +27,7 @@ function apply_log_chng(enclprobs, dlexucfg)::Vector{String}
                 split(s, jlib.create_compound_delim(dlexucfg.inquote, dlexucfg.indelm))
             idx = 1
             for strcol in strarray
+                #strcol = dlexucfg.quotes * strcol * dlexucfg.quotes
                 for i in eachindex(enclprobs)
                     st = findfirst(enclprobs[i].encl1, strcol)
                     nd = findlast(enclprobs[i].encl2, strcol)
@@ -37,7 +38,7 @@ function apply_log_chng(enclprobs, dlexucfg)::Vector{String}
                         continue
                     else
                         strcol = replace(strcol, enclprobs[i].encl1 => dlexucfg.delimiter)
-                        strcol = replace(strcol, enclprobs[i].encl2 => dlexucfg.delimiter)
+                        strcol = replace(strcol, enclprobs[i].encl2 => dlexucfg.delimiter) 
                     end
                 end
                 if occursin(dlexucfg.delimiter) == true || idx == length(strarray)

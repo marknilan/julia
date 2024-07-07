@@ -1,0 +1,17 @@
+ for line in outv
+        try
+           println(line)  
+           out_array = split(line,';')
+           println(out_array)
+           CSV.write(ofile,Tables.table(out_array),
+                 writeheader=false,
+                 append=true,
+                 delim=dlexucfg.delimiter,
+                 quotechar=only(dlexucfg.quotes),
+                 quotestrings=true,
+           )
+        catch e
+            println("error : $(e) \n Unable to write to CSV file $(ofile)")
+            exit(8)
+        end    
+    end    

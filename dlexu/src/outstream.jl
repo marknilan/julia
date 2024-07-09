@@ -2,10 +2,10 @@ module outstream
 
 include("../../jlib/jlib.jl")
 
-#using CSV
+using CSV
 #using DataFrames
-#using Tables
-using DelimitedFiles
+using Tables
+#using DelimitedFiles
 using Dates
 
 function make_output(outv::Vector{String}, dlexucfg)::Bool
@@ -15,37 +15,23 @@ function make_output(outv::Vector{String}, dlexucfg)::Bool
     fn = "$(dlexucfg.outdir)" * "$(jlib.determine_os())" * jlib.getfn(dlexucfg.logfile)
     ofile = "$(fn)_$(Dates.format(now(), "yyyy-mm-dd_HH-MM-SS")).csv"
     println("    Dlexu will write CSV output to $(ofile)")
-    for line in outv
-        a = split(line,dlexucfg.delimiter)
-        println(a)    
-    end
-    #f = open(ofile, "w")
-    #for line in outv 
-    #      out_arr = split(line)
-    #      for i in eachindex(out_arr)
-    #        try
-    #           print(f, dlexucfg.quotes * out_arr[i] * dlexucfg.quotes)
-    #        catch e
-    #           println("error : $(e) \n Unable to write to CSV file $(ofile)")
-    #           exit(8)
-    #        end       
-    #      end
-    #end 
-    #close(f)
-    
-    #try
-        #writedlm(ofile, outv, only(dlexucfg.delimiter))
-    #    CSV.write(ofile, DataFrame(outv), delim=only(dlexucfg.delimiter))
-    #    CSV.write(
-    #        ofile,outv,
-    #        #Tables.table(outv),
-    ##        writeheader = false,
-    #        append=true
-     #       delim = dlexucfg.delimiter,
-    #        quotechar = only(dlexucfg.quotes),
-    #    )
-        println("    CSV file created successfully")
-        outok = true
+    #try 
+        f = open(ofile, "w")   
+    #catch e
+    #    println("error : $(e) \n Unable to write to CSV file $(ofile)")
+    #    exit(8)
+    #end    
+    a = split(outv)
+    colcnt = size(a)
+    for (index, line) in enumerate(a)
+        if !(writerow(f,line,dlexucfg,colcnt))
+            println("error : in writerow \n Unable to write ROW $(index) to CSV file $(ofile)")
+            exit(8)
+        end    
+    end    
+    close(f)  
+    println("    CSV file created successfully")
+    outok = true
     #catch e
     #    println("error : $(e) \n Unable to write to CSV file $(ofile)")
     #    exit(8)
@@ -54,5 +40,26 @@ function make_output(outv::Vector{String}, dlexucfg)::Bool
     return outok
 
 end
+
+function writerow(f,line,dlexucfg,colcnt)::Bool
+
+     
+     for (colnum, colval) in enumerate(line)
+         if colnum == 1
+            valstr = dlexucfg.quotes * colval * dlexucfg.quotes * dlexucfg.delimiter
+         elseif colnum == colcnt
+            valstr = dlexucfg.quotes * colval * dlexucfg.quotes
+         else
+            valstr = dlexucfg.delimiter * dlexucfg.quotes * colval * dlexucfg.quotes
+         end             
+         try
+             write(f,valstr)
+             return true
+         catch
+             println("error : Column write error $(colnum) to CSV file $(ofile)")
+             return false
+         end
+     end    
+end    
 
 end # module

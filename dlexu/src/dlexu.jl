@@ -4,7 +4,7 @@ include("../../jlib/jlib.jl")
 include("./structs.jl")
 include("./startup.jl")
 include("./probability.jl")
-include("./gui.jl")
+#include("./gui.jl")
 include("./tailor.jl")
 include("./outstream.jl")
 
@@ -14,7 +14,7 @@ const match_margin = 0.15
 
 # mainline here
 function dlexu()
-    gui.DlexUI()
+    #gui.DlexUI()
     
     #gui.display_message("DLEXU the Devops Log eXtract Utility")
     jlib.disptm("    dlexu started")

@@ -1,6 +1,6 @@
 module gui
 
-using Gtk
+#using Gtk
 include("../../jlib/jlib.jl")
 
 

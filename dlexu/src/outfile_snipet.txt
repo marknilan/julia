@@ -15,3 +15,37 @@
             exit(8)
         end    
     end    
+
+
+      #a::Vector{String} = []
+    
+    open(ofile, "w") do io
+       for line in outv
+           a = filter(x -> !(x==""),split(line,dlexucfg.delimiter))
+           println("a is $(a)")
+           writedlm(io, a, ',')
+       end
+    end
+
+
+        #try 
+        f = open(ofile, "w")   
+    #catch e
+    #    println("error : $(e) \n Unable to write to CSV file $(ofile)")
+    #    exit(8)
+    #end    
+    a = split(outv)
+    colcnt = size(a)
+    for (index, line) in enumerate(a)
+        if !(writerow(f,line,dlexucfg,colcnt))
+            println("error : in writerow \n Unable to write ROW $(index) to CSV file $(ofile)")
+            exit(8)
+        end    
+    end    
+    close(f)  
+    println("    CSV file created successfully")
+    outok = true
+    #catch e
+    #    println("error : $(e) \n Unable to write to CSV file $(ofile)")
+    #    exit(8)
+    #end

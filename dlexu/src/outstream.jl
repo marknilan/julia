@@ -15,21 +15,20 @@ function make_output(outv::Vector{String}, dlexucfg)::Bool
     fn = "$(dlexucfg.outdir)" * "$(jlib.determine_os())" * jlib.getfn(dlexucfg.logfile)
     ofile = "$(fn)_$(Dates.format(now(), "yyyy-mm-dd_HH-MM-SS")).csv"
     println("    Dlexu will write CSV output to $(ofile)")
-    #try 
-        f = open(ofile, "w")   
-    #catch e
-    #    println("error : $(e) \n Unable to write to CSV file $(ofile)")
-    #    exit(8)
-    #end    
-    a = split(outv)
-    colcnt = size(a)
-    for (index, line) in enumerate(a)
-        if !(writerow(f,line,dlexucfg,colcnt))
-            println("error : in writerow \n Unable to write ROW $(index) to CSV file $(ofile)")
-            exit(8)
+    outarray = []
+    for line in outv
+        a = split(line,",")
+        for value in a
+           b = split(value,dlexucfg.delimiter)
+           push!(outarray,b)
         end    
-    end    
-    close(f)  
+    end 
+    CSV.write(ofile,Tables.table(outarray),
+                 writeheader=false,
+                 delim=dlexucfg.delimiter,
+                 quotechar=only(dlexucfg.quotes),
+                 quotestrings=true,
+           ) 
     println("    CSV file created successfully")
     outok = true
     #catch e

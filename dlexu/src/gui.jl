@@ -1,56 +1,33 @@
 module gui
 
-#using Gtk
+using Blink
+
+
+
 include("../../jlib/jlib.jl")
 
 
-# function DlexUI()
-
-#    jlib.open_in_default_browser(".\\dlexumenu.html")
-
-# end
-
 function DlexUI()
-   win = GtkWindow("A new window")
-   g = GtkGrid()
-   a = GtkEntry()  # a widget for entering text
-   set_gtk_property!(a, :text, "This is Gtk!")
-   b = GtkCheckButton("Check me!")
-   c = GtkScale(false, 0:10)     # a slider
 
-# Now let's place these graphical elements into the Grid:
-   g[1,1] = a    # Cartesian coordinates, g[x,y]
-   g[2,1] = b
-   g[1:2,2] = c  # spans both columns
-   set_gtk_property!(g, :column_homogeneous, true)
-   set_gtk_property!(g, :column_spacing, 15)  # introduce a 15-pixel gap between columns
-   push!(win, g)
-   showall(win)
-end
 
-function display_message(message::String)::Bool
 
-    win = GtkWindow("gtkwait")
+w = Window() 
 
-    b = GtkButton("Continue")
-    push!(win, b)
+body!(w, "Hello World")  
 
-    e = GtkButton("Leave Dlexu")
-    push!(win, e)
+ handle(w, "press") do args...
+         println("Start")
+         sleep(5) 
+         println("End")
+       end
+ 
 
-    signal_connect(on_button_clicked, b, "clicked")
-    signal_connect(on_button_clicked, e, "exit")
+   body!(w, """<button onclick='Blink.msg("press", 1)'>go</button>""", async=false);
 
-    if !isinteractive()
-        c = Condition()
-        signal_connect(win, :close_request) do widget
-            notify(c)
-        end
-    end
-    @async Gtk4.GLib.glib_main()
-    wait(c)
+    while true   
+         yield()   
+       end
 
-    return true
 
 end
 

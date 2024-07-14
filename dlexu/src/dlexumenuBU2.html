@@ -3,14 +3,14 @@
 <html>
 
 <head>
-    <title>New Member Registration</title>
+    <title>Julia Based Log Extract Utlity</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
         html, body {
           min-height: 100%;
           }
-          body, div, form, input, select, textarea, label, p { 
+          body, div, form, input, select, textarea, label, p {
           padding: 0;
           margin: 0;
           outline: none;
@@ -39,12 +39,12 @@
           padding: 20px;
           border-radius: 6px;
           background: #fff;
-          box-shadow: 0 0 8px  #669999; 
+          box-shadow: 0 0 8px  #669999;
           }
           .banner {
           position: relative;
           height: 100px;
-          background-image: url("/uploads/media/default/0001/02/c1504011491c4e04e5158b63a27a4ea654b03ed1.jpeg");  
+          background-image: url("P1010930.JPG");
           background-size: cover;
           display: flex;
           justify-content: center;
@@ -53,15 +53,20 @@
           }
           .banner::after {
           content: "";
-          background-color: rgba(0, 0, 0, 0.2); 
+          background-color: rgba(0, 0, 0, 0.2);
           position: absolute;
           width: 100%;
           height: 100%;
           }
           input {
-          width: calc(60% - 10px);
+          width: calc(60% - 5px);
           padding: 5px;
           }
+
+          input.lim4 {
+              size=4
+          }
+
           .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
           color:  #669999;
           }
@@ -70,7 +75,7 @@
           box-shadow: 0 0 3px 0  #669999;
           color: #669999;
           }
-    
+
           .iteml:hover p, .iteml:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
           color:  #669999;
           }
@@ -78,63 +83,63 @@
           border: 1px solid transparent;
           box-shadow: 0 0 3px 0  #669999;
           color: #669999;
-          }      
-                
+          }
+
           .iteml {
           position: relative;
           text-align: left;
-          margin: 10px 0;
+          margin: 10px 1px;
           }
-          
+
           .itemr {
           position: relative;
           text-align: right;
           margin: 10px 0;
           }
-         
+
           .item span {
           color: red;
           }
-          
+
           .row {
             display: flex;
           }
-         
+
           .column1 {
           display:block;
           flex-direction:column;
           flex-wrap:wrap;
              flex: 100%;
              padding: 10px;
-          }    
+          }
           .column1 div {
           width:99%;
           }
-    
+
           .column2 {
           display:block;
           flex-direction:column;
           flex-wrap:wrap;
              flex: 100%;
              padding: 10px;
-          }    
+          }
           .column2 div {
           width:99%;
           }
-        
+
           .column3 {
           display:flex;
           justify-content:space-between;
           flex-direction:row;
           flex-wrap:wrap;
              flex: 20%;
-             padding: 10px;         
-          }    
-    
-          ul.noitem {
-            list-style-type: none;        
+             padding: 10px;
           }
-      
+
+          ul.noitem {
+            list-style-type: none;
+          }
+
           .btn-block {
           margin-top: 10px;
           text-align: center;
@@ -145,7 +150,7 @@
           width: 150px;
           padding: 10px;
           border: none;
-          border-radius: 5px; 
+          border-radius: 5px;
           background:  #669999;
           font-size: 16px;
           color: #fff;
@@ -154,19 +159,23 @@
           button:hover {
           background:  #a3c2c2;
           }
-         
-          li.b {      
+
+          li.b {
             margin: 20px 0;
           }
     </style>
+   <script type="text/javascript" src="./dlexumenu.js"></script>
+
 </head>
 
 <body>
+   <input type="file" id="fileInput">
+    <pre id="output"></pre>
 
     <div class="testbox">
         <form action="/">
             <div class="banner">
-                <h1>D L E X U - the Devops Log eXtract Utility</h1>
+                <h1>D L E X U - the Devops Log EXtract Utility</h1>
             </div>
 
             <div class="row">
@@ -236,7 +245,7 @@
                         </li>
                         <li>
                             <div class="iteml">
-                                <input id="infiletype" type="text" name="infiletype" required/>
+                                <input class=lim4" id="infiletype" type="text" name="infiletype" required/>
                             </div>
                         </li>
                         <li>
@@ -285,6 +294,8 @@
             <div class="btn-block">
                 <button type="continue" href="/">Continue</button>
             </div>
+
+
         </form>
     </div>
 </body>

@@ -130,14 +130,10 @@
           .column3 {
           display:flex;
           justify-content:space-between;
-          flex-direction:column;
+          flex-direction:row;
           flex-wrap:wrap;
              flex: 20%;
              padding: 10px;
-          }
-
-          .column3 div {
-          width:99%;
           }
 
           ul.noitem {
@@ -168,25 +164,20 @@
             margin: 20px 0;
           }
     </style>
-   
+                <script>
+
+	            window.onbeforeunload = function() {
+				    return "Are you sure you want to leave DLEXU?";
+	            };
+
+	            function closePage() {
+				    window.close();
+	            }
+            </script>
 </head>
 
 <body>
 
-    <script>
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('output').textContent = e.target.result;
-            };
-            reader.readAsText(file);
-        });
-    </script>
-    
-<input type="file" id="fileInput">
-<pre id="output"></pre>
-    
     <div class="testbox">
         <form action="/">
             <div class="banner">
@@ -249,7 +240,7 @@
                     <ul class="noitem">
                         <li>
                             <div class="iteml">
-                                 <input id="cfgfile" type="text" name="cfgfile" required/> 
+                                <input id="cfgfile" type="text" name="cfgfile" required/>
                             </div>
                         </li>
                         <hr width="100%" color=#669999 size="1px" align="left" />
@@ -296,8 +287,6 @@
                         </li>
                     </ul>
                 </div>
-
-
 
             </div>
 

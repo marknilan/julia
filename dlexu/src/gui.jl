@@ -1,36 +1,6 @@
 module gui
 
-using Blink
-
-
-
 include("../../jlib/jlib.jl")
-
-
-function DlexUI()
-
-
-
-w = Window() 
-
-body!(w, "Hello World")  
-
- handle(w, "press") do args...
-         println("Start")
-         sleep(5) 
-         println("End")
-       end
- 
-
-   body!(w, """<button onclick='Blink.msg("press", 1)'>go</button>""", async=false);
-
-    while true   
-         yield()   
-       end
-
-
-end
-
 
 function dispcfg(dlexucfg)
     :Bool

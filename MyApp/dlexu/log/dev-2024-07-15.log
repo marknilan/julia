@@ -1,0 +1,169 @@
+┌ Info: 2024-07-15 20:58:59 Watching ["c:\\Users\\mark7\\projects\\julia\\MyApp\\dlexu"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:19
+┌ Info: 2024-07-15 20:59:00 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 20:59:06 Watching ["c:\\Users\\mark7\\projects\\julia\\MyApp\\dlexu"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:19
+┌ Info: 2024-07-15 20:59:06 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 20:59:08 
+│ Web Server starting at http://127.0.0.1:9101?CHANNEL__=NLTHKIDCVAZJNCNOQAAUPWMIJXPRJNFZ 
+└ @ Genie.Server C:\Users\mark7\.julia\packages\Genie\uliWf\src\Server.jl:182
+┌ Info: 2024-07-15 20:59:08 Listening on: 127.0.0.1:9101, thread id: 1
+└ @ HTTP.Servers C:\Users\mark7\.julia\packages\HTTP\sJD5V\src\Servers.jl:382
+┌ Info: 2024-07-15 21:01:09 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:01:09 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:01:52 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:01:52 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:02:17 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:02:17 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:03:12 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:03:12 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:03:45 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:03:45 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:05:14 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:05:14 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:05:38 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:05:38 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:06:32 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:06:32 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:06:59 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:06:59 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:07:41 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:07:41 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:08:38 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:08:38 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:09:32 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:09:32 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:10:00 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:10:00 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:10:13 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:10:13 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:10:37 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:10:37 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:10:57 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:10:57 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:11:53 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:11:53 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:15:28 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:15:28 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:15:47 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:15:47 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:16:54 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:16:54 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:17:39 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:17:39 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:17:58 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:17:58 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:20:27 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:20:27 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:23:02 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:23:02 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:26:39 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:26:39 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:26:56 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:26:56 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:30:07 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:30:07 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:30:22 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:30:22 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:31:59 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:31:59 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:36:45 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:36:45 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:37:08 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:37:08 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:39:06 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:39:06 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:39:18 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:39:18 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:40:17 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:40:17 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:41:05 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:41:05 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:41:22 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:41:22 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:43:09 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:43:09 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:43:30 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:43:30 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:43:57 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22
+┌ Info: 2024-07-15 21:43:57 Autoreloading
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\ESvsh\src\GenieAutoReload.jl:22

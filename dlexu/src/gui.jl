@@ -1,6 +1,7 @@
 module gui
 
-#using Gtk
+using Dash
+
 include("../../jlib/jlib.jl")
 
 
@@ -10,22 +11,33 @@ include("../../jlib/jlib.jl")
 
 # end
 
-function DlexUI()
-   win = GtkWindow("A new window")
-   g = GtkGrid()
-   a = GtkEntry()  # a widget for entering text
-   set_gtk_property!(a, :text, "This is Gtk!")
-   b = GtkCheckButton("Check me!")
-   c = GtkScale(false, 0:10)     # a slider
 
-# Now let's place these graphical elements into the Grid:
-   g[1,1] = a    # Cartesian coordinates, g[x,y]
-   g[2,1] = b
-   g[1:2,2] = c  # spans both columns
-   set_gtk_property!(g, :column_homogeneous, true)
-   set_gtk_property!(g, :column_spacing, 15)  # introduce a 15-pixel gap between columns
-   push!(win, g)
-   showall(win)
+function DlexUI(dlexucfg)
+
+
+app = dash()
+
+app.layout = html_div() do
+    html_i("Try typing in input 1 & 2, and observe how debounce is impacting the callbacks. Press Enter and/or Tab key in Input 2 to cancel the delay."),
+    html_br(),
+    dcc_input(id="input-no-debounce", type="text", value=dlexucfg.logfile),
+    dcc_input(id="input-debounce", type="text", value=dlexucfg.infiletype, debounce=true),
+    html_div(id = "output-keywords-2")
+end
+
+callback!(
+    app,
+    Output("output-keywords-2", "children"),
+    Input("input-no-debounce", "value"),
+    Input("input-debounce", "value"),
+) do input_1, input_2
+    return "Input 1 is \"$input_1\" and Input 2 is \"$input_2\""
+end
+
+run_server(app, "0.0.0.0", debug=true)
+
+
+
 end
 
 function display_message(message::String)::Bool

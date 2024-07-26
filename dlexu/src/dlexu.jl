@@ -14,13 +14,18 @@ const match_margin = 0.15
 
 # mainline here
 function dlexu()
+<<<<<<< HEAD
     gui.DlexUI()
     
+=======
+     
+>>>>>>> 40453c59756e1cecfbdd539c6ad4783ed7200bb0
     #gui.display_message("DLEXU the Devops Log eXtract Utility")
     jlib.disptm("    dlexu started")
     # configuration
     dlexucfg, dlexudates, dlexuencl = Startup.getTOML(ARGS[1])
     datelookup = Startup.make_datelookup(dlexudates)
+    gui.DlexUI(dlexucfg)
     # check - do we need to sample the file based on the maximum observations?
     tstpop = Startup.calc_test_population(dlexucfg.logfile, maxobs)
     enclprobs = Probability.encl_proclivity(dlexucfg.logfile, tstpop, match_margin, dlexuencl)

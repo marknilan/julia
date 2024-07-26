@@ -1,9 +1,7 @@
 module gui
 
-<<<<<<< HEAD
 include("../../jlib/jlib.jl")
 
-=======
 using Dash
 
 include("../../jlib/jlib.jl")
@@ -24,18 +22,19 @@ app = dash()
 app.layout = html_div() do
     html_i("Try typing in input 1 & 2, and observe how debounce is impacting the callbacks. Press Enter and/or Tab key in Input 2 to cancel the delay."),
     html_br(),
-    dcc_input(id="input-no-debounce", type="text", value=dlexucfg.logfile),
-    dcc_input(id="input-debounce", type="text", value=dlexucfg.infiletype, debounce=true),
-    html_div(id = "output-keywords-2")
+    dcc_input(id="logfile", type="text", value=dlexucfg.logfile),
+    html_br(),
+    dcc_input(id="infiletype", type="text", value=dlexucfg.infiletype),
+    html_div(id = "configfileout")
 end
 
 callback!(
     app,
-    Output("output-keywords-2", "children"),
-    Input("input-no-debounce", "value"),
-    Input("input-debounce", "value"),
-) do input_1, input_2
-    return "Input 1 is \"$input_1\" and Input 2 is \"$input_2\""
+    Output("configfileout", "children"),
+    Input("logfile", "value"),
+    Input("infiletype", "value"),
+) do logfile, infiletype
+    return "Input 1 is \"$logfile\" and Input 2 is \"$infiletype\""
 end
 
 run_server(app, "0.0.0.0", debug=true)
@@ -70,8 +69,6 @@ function display_message(message::String)::Bool
 
 end
 
-
->>>>>>> 40453c59756e1cecfbdd539c6ad4783ed7200bb0
 function dispcfg(dlexucfg)
     :Bool
 

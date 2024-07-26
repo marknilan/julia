@@ -14,12 +14,6 @@ const match_margin = 0.15
 
 # mainline here
 function dlexu()
-<<<<<<< HEAD
-    gui.DlexUI()
-    
-=======
-     
->>>>>>> 40453c59756e1cecfbdd539c6ad4783ed7200bb0
     #gui.display_message("DLEXU the Devops Log eXtract Utility")
     jlib.disptm("    dlexu started")
     # configuration

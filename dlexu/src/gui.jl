@@ -19,24 +19,23 @@ function DlexUI(dlexucfg)
 
 app = dash()
 
-app.layout = html_div(style = Dict("backgroundColor" => "#7DDA58")) do
-    html_h1(
-        "DLEXU",
-        style = Dict("color" => "#063970", "textAlign" => "left"),
+app.layout = html_div(className="app-header") do
+    html_h1("DLEXU",className="app-header.app-header--title"
     ),
     html_div(
         "Devops  Log  EXtract  Utility",
         style = Dict("color" => "#063970", "textAlign" => "left"),
     ),
     html_br(),
-    html_col(style = Dict("backgroundColor" => "#7DDA58", "textAlign" => "left"),
-        id="lhcol"),
-    html_colgroup(children="lhcol"),
-    html_label(style = Dict("color" => "#111111", "textAlign" => "left"),
-        id="logfilelabel","Log filename and path"),
-    dcc_input(id="logfile", type="text", value=dlexucfg.logfile),
+    html_label(className="app-div1",id="logfilelabel","Log filename and path"),
+    dcc_input(id="logfile", className="app-div2", type="text", value=dlexucfg.logfile),
     html_br(),
-    dcc_input(id="infiletype", type="text", value=dlexucfg.infiletype),
+    html_label(className="app-div1",id="infilelabel","Log type (LOG DLM CSV JSON"),
+    dcc_input(className="app-div2",id="infiletype", type="text", value=dlexucfg.infiletype),
+    html_br(),
+    html_label(className="app-div1",
+        id="indelmlabel","Incoming delimiter (<space> <any char> <any str>"),
+    dcc_input(id="indelm", className="app-div2", type="text", value=dlexucfg.indelm),
     html_div(id = "configfileout")
 end
 

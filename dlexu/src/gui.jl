@@ -19,9 +19,21 @@ function DlexUI(dlexucfg)
 
 app = dash()
 
-app.layout = html_div() do
-    html_i("Try typing in input 1 & 2, and observe how debounce is impacting the callbacks. Press Enter and/or Tab key in Input 2 to cancel the delay."),
+app.layout = html_div(style = Dict("backgroundColor" => "#7DDA58")) do
+    html_h1(
+        "DLEXU",
+        style = Dict("color" => "#063970", "textAlign" => "left"),
+    ),
+    html_div(
+        "Devops  Log  EXtract  Utility",
+        style = Dict("color" => "#063970", "textAlign" => "left"),
+    ),
     html_br(),
+    html_col(style = Dict("backgroundColor" => "#7DDA58", "textAlign" => "left"),
+        id="lhcol"),
+    html_colgroup(children="lhcol"),
+    html_label(style = Dict("color" => "#111111", "textAlign" => "left"),
+        id="logfilelabel","Log filename and path"),
     dcc_input(id="logfile", type="text", value=dlexucfg.logfile),
     html_br(),
     dcc_input(id="infiletype", type="text", value=dlexucfg.infiletype),
@@ -38,8 +50,6 @@ callback!(
 end
 
 run_server(app, "0.0.0.0", debug=true)
-
-
 
 end
 

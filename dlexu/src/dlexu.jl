@@ -19,7 +19,8 @@ function dlexu()
     # configuration
     dlexucfg, dlexudates, dlexuencl = Startup.getTOML(ARGS[1])
     datelookup = Startup.make_datelookup(dlexudates)
-    gui.DlexUI(dlexucfg)
+    p = gui.DlexUI(dlexucfg)
+    println("p is $(p)")
     # check - do we need to sample the file based on the maximum observations?
     tstpop = Startup.calc_test_population(dlexucfg.logfile, maxobs)
     enclprobs = Probability.encl_proclivity(dlexucfg.logfile, tstpop, match_margin, dlexuencl)

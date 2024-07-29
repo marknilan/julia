@@ -1,10 +1,9 @@
 module gui
 
 include("../../jlib/jlib.jl")
+include("./structs.jl")
 
 using Dash
-
-include("../../jlib/jlib.jl")
 
 
 # function DlexUI()
@@ -16,9 +15,8 @@ include("../../jlib/jlib.jl")
 
 function DlexUI(dlexucfg)
 
-
 app = dash()
-
+p = structs.DlexuCfg()
 app.layout = html_div(className="app-header") do
     html_h1("DLEXU",className="app-header.app-header--title"
     ),
@@ -36,6 +34,11 @@ app.layout = html_div(className="app-header") do
     html_label(className="app-div1",
         id="indelmlabel","Incoming delimiter (<space> <any char> <any str>"),
     dcc_input(id="indelm", className="app-div2", type="text", value=dlexucfg.indelm),
+    html_br(),
+    html_label(className="app-div1",
+        id="inquotelabel","Incoming quote char ('\"' '`' \"'\" "),
+    dcc_input(id="inquote", className="app-div2", type="text", value=dlexucfg.inquote),
+    
     html_div(id = "configfileout")
 end
 
@@ -44,11 +47,16 @@ callback!(
     Output("configfileout", "children"),
     Input("logfile", "value"),
     Input("infiletype", "value"),
-) do logfile, infiletype
-    return "Input 1 is \"$logfile\" and Input 2 is \"$infiletype\""
+    Input("indelm", "value"),
+    Input("inquote", "value"),
+) do logfile, infiletype, indelm, inquote
+    p = structs.DlexuCfg(logfile, infiletype, indelm, inquote, " ", " ", " ", " ")
+    println("p is $(p)")
+    #return "logfile: \"$logfile\" infiletype: \"$infiletype\" indelm: \"$indelm\""
 end
 
 run_server(app, "0.0.0.0", debug=true)
+return p
 
 end
 

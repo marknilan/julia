@@ -24,7 +24,7 @@ app.layout = html_div(className="app-header") do
         "Devops  Log  EXtract  Utility",
         style = Dict("color" => "#063970", "textAlign" => "left"),
     ),
-    html_br(),
+    html_hr(),
     html_label(className="app-div1",id="logfilelabel","Log filename and path"),
     dcc_input(id="logfile", className="app-div2", type="text", value=dlexucfg.logfile),
     html_br(),
@@ -36,10 +36,28 @@ app.layout = html_div(className="app-header") do
     dcc_input(id="indelm", className="app-div2", type="text", value=dlexucfg.indelm),
     html_br(),
     html_label(className="app-div1",
-        id="inquotelabel","Incoming quote char ('\"' '`' \"'\" "),
+        id="inquotelabel","Incoming quote char ('\"' '`' \"'\" )"),
     dcc_input(id="inquote", className="app-div2", type="text", value=dlexucfg.inquote),
-    
+    html_hr(),
+    html_label(className="app-div1",
+        id="outdirlabel","CSV export target directory - CSV name will be log_named_timestamp"),
+    dcc_input(id="outdir", className="app-div2", type="text", value=dlexucfg.outdir),
+    html_br(),
+    html_label(className="app-div1",
+        id="delimiterlabel","CSV output column delimiter (<space> <any char> <any str>"),
+    dcc_input(id="delimiter", className="app-div2", type="text", value=dlexucfg.delimiter),
+    html_br(),
+    html_label(className="pl",
+        id="quoteslabel","CSV output quote character ('\"' '`' \"'\" )"),
+    dcc_input(id="quotes", className="pr", type="text", value=dlexucfg.quotes),
+    html_br(),
+    html_label(className="app-div1",
+        id="datefmtlabel","CSV output date column format (eg YYYY-MM-DD:HH:MM:SS)"),
+    dcc_input(id="datefmt", className="app-div2", type="text", value=dlexucfg.datefmt),
+    html_hr(),
+    html_button("Exit Dlexu without saving", id="exitdlexu", className="button button3", n_clicks=0),
     html_div(id = "configfileout")
+
 end
 
 callback!(
@@ -49,11 +67,17 @@ callback!(
     Input("infiletype", "value"),
     Input("indelm", "value"),
     Input("inquote", "value"),
-) do logfile, infiletype, indelm, inquote
-    p = structs.DlexuCfg(logfile, infiletype, indelm, inquote, " ", " ", " ", " ")
-    println("p is $(p)")
-    #return "logfile: \"$logfile\" infiletype: \"$infiletype\" indelm: \"$indelm\""
+    Input("outdir", "value"),
+    Input("delimiter", "value"),
+    Input("quotes", "value"),
+    Input("datefmt", "value"),
+    Input("exitdlexu", "n_clicks")
+) do logfile, infiletype, indelm, inquote, outdir, delimiter, quotes, datefmt, exitdlexu 
+    p = structs.DlexuCfg(logfile, infiletype, indelm, inquote, outdir, delimiter, quotes, datefmt)
+    #println(n_clicks)
+        
 end
+
 
 run_server(app, "0.0.0.0", debug=true)
 return p

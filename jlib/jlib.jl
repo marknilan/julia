@@ -224,6 +224,7 @@ function open_in_default_browser(url::AbstractString)::Bool
             Base.run(`start msedge $url`)
             return true
         elseif Sys.islinux()
+            println("linux detected")
             browser = "xdg-open"
             if isfile(browser)
                 Base.run(`$browser $url`)
@@ -239,6 +240,10 @@ function open_in_default_browser(url::AbstractString)::Bool
         return false
     end
 end
+
+
+
+
 
 # creates a delimiter boundary if given a delimiter and quoted values
 # eg "val","val" or 'val';'val' would give delimiters "\",\"" and "','" 

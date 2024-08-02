@@ -3,7 +3,6 @@
 using TOML, StructTypes
 
 include("./structs.jl")
-include("./gui.jl")
 include("../../jlib/jlib.jl")
 
 # reads a TOML format file, gets dlexu program configuration 
@@ -56,8 +55,8 @@ function getTOML(cfgfile::String)
     end
     # make list of enclosure pairs to search for
     dlexuencl = MakeEncl(enclist)
-    
-    gui.dispcfg(dlexucfg)
+    # show the program configuration at the command line
+    dispcfg(dlexucfg)
     return dlexucfg, dlexudates, dlexuencl
 end
 

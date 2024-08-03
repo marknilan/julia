@@ -21,7 +21,12 @@ function dlexu()
     datelookup = Startup.make_datelookup(dlexudates)
     #p = ui.DlexUI(dlexucfg)
     #println("p is $(p)")
-    ui.cfgdlexu()
+    try
+        ui.cfgdlexu()
+    catch e
+        println("Dlexu cancelled by user")
+        exit(8)
+    end    
     # check - do we need to sample the file based on the maximum observations?
     tstpop = Startup.calc_test_population(dlexucfg.logfile, maxobs)
     enclprobs = Probability.encl_proclivity(dlexucfg.logfile, tstpop, match_margin, dlexuencl)

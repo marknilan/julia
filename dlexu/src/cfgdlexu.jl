@@ -7,26 +7,13 @@ function cfgdlexu()
     win = GtkWindow("D L E X U", 1200, 900)
     g = GtkGrid()
     dlexutitle = GtkLabel("DLEXU - the Devops Log EXtract Utility")
-    cfglabel = GtkLabel("Configuration file and path : ")
-    dlexucfg = GtkEntry()
-    dlexucfg.text = "blah blah"
-    cfgd = GtkButton("...")
-
-    function on_click(cfgd)
-       #info_dialog(f, "Julia rocks!",win)
-       open_dialog("Pick a file to open", win) do filename
-           dlexucfg.text = filename 
-       end
-    end
-    signal_connect(on_click, cfgd, "clicked") 
-    # place these graphical elements into the Grid:
-    g[1,1] = dlexutitle     
-    g[1,4] = cfglabel
-    g[2,4] = dlexucfg
-    g[1,5] = cfgd   
+    blank = GtkLabel("   ")  
+    g[1:8,1] = dlexutitle   
+    g[1,2:6] = blank  
+    g = make_data_entry(g,win)
     g.column_homogeneous = false # grid forces columns to have the same width
-    g.column_spacing = 3   
-    g = makebuttons(g)
+    g.column_spacing = 5   
+    g = make_buttons(g,win)
     push!(win,g)
     
     if !isinteractive()
@@ -41,52 +28,69 @@ function cfgdlexu()
 
 end 
 
-function makebuttons(g)
+function make_buttons(g,win)
 
     hbox = GtkBox(:h)  # :h makes a horizontal layout, :v a vertical layout
     cancel = GtkButton("Cancel")
     save = GtkButton("Save")
     ok = GtkButton("Continue")
-    save.hexpand = true
-    hbox.spacing = 10
+    save.hexpand = false
+    hbox.spacing = 5
     push!(hbox, cancel)
     push!(hbox,save)
     push!(hbox, ok)
-    g[4,1] = hbox
+
+    function cancelclick(cancel)
+        Gtk4.destroy(win)
+        println("Exit Dlexu via Cancel")
+        exit(0)
+    end
+
+    signal_connect(cancelclick, cancel, "clicked") 
+    
+    g[11,10] = hbox
     
     return g
 
+end
+
+function make_data_entry(g,win)
+
+    cfglabel = GtkLabel("Configuration file and path : ")
+    dlexucfg = GtkEntry()
+    dlexucfg.text = "blah blah"
+    cfgd = GtkButton("...")
+    cfgd.hexpand = false
+    loglabel = GtkLabel("Logname and path : ")
+    logfile = GtkEntry()
+    logfile.text = "blah blah"
+    logd = GtkButton("...")
+    logd.hexpand = false
+
+    g[2:4,7] = cfglabel
+    g[5:10,7] = dlexucfg
+    g[11,7]   = cfgd   
+    
+    g[2:4,8] = loglabel
+    g[5:10,8] = logfile
+    g[11,8]   = logd   
+    
+    
+    function cfgclick(cfgd)
+       #info_dialog(f, "Julia rocks!",win)
+       open_dialog("Pick a DLEXU configuration file. Must be in TOML format", win) do filename
+           dlexucfg.text = filename 
+       end
+    end
+
+    function logclick(logd)
+       #info_dialog(f, "Julia rocks!",win)
+       open_dialog("Pick a log for Dlexu to process", win) do filename
+           logfile.text = filename 
+       end
+    end
+    signal_connect(cfgclick, cfgd, "clicked") 
+    signal_connect(logclick, logd, "clicked") 
+
+   return g
 end	
-
-function canvascode(win)
-     c = GtkCanvas(1200, 900; vexpand=true, hexpand=true)
-   win = GtkWindow(c,"D L E X U")
-   @guarded draw(c) do widget
-     ctx = getgc(c)
-     h = height(c)
-     w = width(c)
-     # Paint red rectangle
-     rectangle(ctx, 0, 0, w, h/8)
-     set_source_rgb(ctx, 1, 0, 0)
-     fill(ctx)
-     # draw text 
-    select_font_face(ctx, "Sans", Cairo.FONT_SLANT_NORMAL,
-         Cairo.FONT_WEIGHT_NORMAL);
-    set_font_size(ctx, 22.5);
-    set_source_rgb(ctx, 0.8,0.8,0.8)
-    extents = text_extents(ctx, "DLEXU MENU");
-    x = 128.0-(extents[3]/2 + extents[1]);
-    y = 128.0-(extents[4]/2 + extents[2]);
-    move_to(ctx, x, y);
-    show_text(ctx, "DLEXU MENU");
-     # Paint blue rectangle
-     rectangle(ctx, 0, 3h/4, w, h/4)
-     set_source_rgb(ctx, 0, 0, 1)
-     fill(ctx)
-   end
-   if !isinteractive()
-       @async Gtk4.GLib.glib_main()
-       Gtk4.GLib.waitforsignal(win,:close_request)
-   end
-
-  end 

@@ -4,55 +4,46 @@ using Gtk4, Graphics, Cairo, Colors
 
 function cfgdlexu() 
 
-win = GtkWindow("D L E X U", 1200, 900)
-g = GtkGrid()
-dlexutitle = GtkLabel("DLEXU - the Devops Log EXtract Utility")
-cfglabel = GtkLabel("Configuration file and path : ",justify="right")
-dlexucfg = GtkEntry()
-dlexucfg.justify = "left"
-dlexucfg.text = "blah blah"
-cfgd = GtkButton("...")
-# place these graphical elements into the Grid:
-g[1,1] = dlexutitle     
-g[1,4] = cfglabel
-g[2,4] = dlexucfg
-g(3,4) = cfgd   
-g.column_homogeneous = false # grid forces columns to have the same width
-g.column_spacing = 3   
-push!(win, g)
+    win = GtkWindow("D L E X U", 1200, 900)
+    g = GtkGrid()
+    dlexutitle = GtkLabel("DLEXU - the Devops Log EXtract Utility")
+    cfglabel = GtkLabel("Configuration file and path : ")
+    dlexucfg = GtkEntry()
+    dlexucfg.text = "blah blah"
+    cfgd = GtkButton("...")
 
-function on_click(cfgd)
-    open_dialog("Pick the Dlexu configuration file", parent) do filename
-       dlexucfg.text = filename
+    function on_click(cfgd)
+       #info_dialog(f, "Julia rocks!",win)
+       open_dialog("Pick a file to open", win) do filename
+           dlexucfg.text = filename 
+       end
     end
-end
-
-signal_connect(on_click, b, "clicked")
-
-if !isinteractive()
-    c = Condition()
-    signal_connect(win, :close_request) do widget
-        notify(c)
+    signal_connect(on_click, cfgd, "clicked") 
+    # place these graphical elements into the Grid:
+    g[1,1] = dlexutitle     
+    g[1,4] = cfglabel
+    g[2,4] = dlexucfg
+    g[1,5] = cfgd   
+    g.column_homogeneous = false # grid forces columns to have the same width
+    g.column_spacing = 3   
+    g = makebuttons(g)
+    push!(win,g)
+    
+    if !isinteractive()
+       c = Condition()
+       signal_connect(win, :close_request) do widget
+           notify(c)
+       end
+       @async Gtk4.GLib.glib_main()
+       wait(c)
     end
-    @async Gtk4.GLib.glib_main()
-    wait(c)
-end
   
 
 end 
 
-function makelayout(win)
-
-
-  af = GtkAspectFrame(0.0, 0.0, 0.5, true)  
-  push!(win, af)
-  return win
-end
-
-function makebuttons(win)
+function makebuttons(g)
 
     hbox = GtkBox(:h)  # :h makes a horizontal layout, :v a vertical layout
-    push!(win, hbox)
     cancel = GtkButton("Cancel")
     save = GtkButton("Save")
     ok = GtkButton("Continue")
@@ -61,7 +52,9 @@ function makebuttons(win)
     push!(hbox, cancel)
     push!(hbox,save)
     push!(hbox, ok)
-    return win
+    g[4,1] = hbox
+    
+    return g
 
 end	
 

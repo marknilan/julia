@@ -4,5 +4,6 @@ module ui
 
 include("gui.jl")
 include("cfgdlexu.jl")
+include("dataentry.jl")
 
 end # module

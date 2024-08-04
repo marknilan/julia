@@ -24,7 +24,7 @@ function dlexu()
     try
         ui.cfgdlexu()
     catch e
-        println("Dlexu cancelled by user")
+        println("$(e) \n Dlexu cannot continue...contact your support")
         exit(8)
     end    
     # check - do we need to sample the file based on the maximum observations?

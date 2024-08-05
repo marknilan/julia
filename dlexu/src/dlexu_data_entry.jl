@@ -1,4 +1,4 @@
-# dataentry.jl
+# dlexu_data_entry.jl
 
 using Gtk4
 
@@ -28,37 +28,43 @@ function make_buttons(g,win)
 
 end
 
-function make_fields(g,win)
-
+function make_fields(g,win,dlexucfg,cfgfile)
     cfglabel = GtkLabel("Configuration file and path : ")
-    dlexucfg = GtkEntry()
-    dlexucfg.text = "blah blah"
+    dlexuconfig = GtkEntry()
+    dlexuconfig.text = cfgfile
     cfgd = GtkButton("...")
     cfgd.hexpand = false
     loglabel = GtkLabel("Logname and path : ")
     logfile = GtkEntry()
-    logfile.text = "blah blah"
+    logfile.text = dlexucfg.logfile
     logd = GtkButton("...")
     logd.hexpand = false
     inftypelabel = GtkLabel("Log Type ( LOG DLM JSON ) : ")
     infiletype = GtkEntry()
+    infiletype.text = dlexucfg.infiletype
     indelmlabel = GtkLabel("Incoming delimiter ( <space> <any char/s> ) : ")
     indelm = GtkEntry()
+    indelm.text = dlexucfg.indelm
     inqtelabel = GtkLabel("Incoming quote char ( ' ` ) : ")
     inquote = GtkEntry()
+    inquote.text = dlexucfg.inquote
     outdirlabel = GtkLabel("Output directory : ")
     outdir = GtkEntry()
+    outdir.text = dlexucfg.outdir
     outd = GtkButton("...")
     outd.hexpand = false
     outdelmlabel = GtkLabel("Output delimiter ( <space> <any char/s> ) : ")
     delimiter = GtkEntry()
+    delimiter.text = dlexucfg.delimiter
     outqtelabel = GtkLabel("Output quote char ( ' ` ) : ")
     quotes = GtkEntry()
+    quotes.text = dlexucfg.quotes
     datefmtlabel = GtkLabel("Output date format ( eg. YYYY-MM-DD HH:MM:SS ) : ")
     datefmt = GtkEntry()
+    datefmt.text = dlexucfg.datefmt
 
     g[2:4,7] = cfglabel
-    g[5:10,7] = dlexucfg
+    g[5:10,7] = dlexuconfig
     g[11,7]   = cfgd   
  
     g[2:4,8] = loglabel
@@ -89,7 +95,7 @@ function make_fields(g,win)
 
     function cfgclick(cfgd)
        open_dialog("Pick a DLEXU configuration file. Must be in TOML format", win) do filename
-          dlexucfg.text = filename
+          dlexuconfig.text = filename
        end
     end
 
@@ -108,6 +114,7 @@ function make_fields(g,win)
     signal_connect(cfgclick, cfgd, "clicked") 
     signal_connect(logclick, logd, "clicked") 
     signal_connect(outclick, outd, "clicked") 
+   
 
    return g
 end	

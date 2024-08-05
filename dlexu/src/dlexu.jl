@@ -22,7 +22,7 @@ function dlexu()
     #p = ui.DlexUI(dlexucfg)
     #println("p is $(p)")
     try
-        ui.cfgdlexu()
+        ui.cfgdlexu(dlexucfg,ARGS[1])
     catch e
         println("$(e) \n Dlexu cannot continue...contact your support")
         exit(8)

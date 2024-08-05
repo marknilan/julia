@@ -2,8 +2,8 @@ module ui
 
 # calls and references screen related programs for dlexu 
 
-include("gui.jl")
-include("cfgdlexu.jl")
-include("dataentry.jl")
+include("dlexu_ui_utils.jl")
+include("configure_dlexu.jl")
+include("dlexu_data_entry.jl")
 
 end # module

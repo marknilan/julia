@@ -24,13 +24,14 @@ function getTOML(cfgfile::String)
             exit(8)
         end
     end
+    println("$(TomlParse)")
     for (iKey, iValue) in TomlParse
         for iValue in (keys(iValue))
-            if iKey == "config"
+            if lowercase(iKey) == "config"
                 setfield!(dlexucfg, Symbol(iValue), TomlParse[iKey][iValue])
-            elseif iKey == "date"
+            elseif lowercase(iKey) == "date"
                 dlexudates = TomlParse[iKey][iValue]
-            elseif iKey == "enclosures"
+            elseif lowercase(iKey) == "enclosures"
                 enclist = TomlParse[iKey][iValue]
             end
         end
@@ -56,7 +57,7 @@ function getTOML(cfgfile::String)
     # make list of enclosure pairs to search for
     dlexuencl = MakeEncl(enclist)
     # show the program configuration at the command line
-    dispcfg(dlexucfg)
+    dispcfg(dlexucfg)    
     return dlexucfg, dlexudates, dlexuencl
 end
 

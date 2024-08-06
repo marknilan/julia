@@ -4,7 +4,7 @@ using Gtk4, Graphics, Cairo, Colors
 
 function cfgdlexu(dlexucfg,cfgfile) 
 
-    win = GtkWindow("D L E X U", 1040, 670)
+    win = GtkWindow("D L E X U", 870, 670)
     g = GtkGrid()
     dlexutitle = GtkLabel("DLEXU - the Devops Log EXtract Utility")     
     g[1:8,1] = dlexutitle       

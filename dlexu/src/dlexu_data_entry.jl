@@ -1,6 +1,7 @@
 # dlexu_data_entry.jl
 
 using Gtk4
+using StringManipulation
 
 function make_buttons(g,win)
 
@@ -29,39 +30,28 @@ function make_buttons(g,win)
 end
 
 function make_fields(g,win,dlexucfg,cfgfile)
-    cfglabel = GtkLabel("Configuration file and path : ")
-    dlexuconfig = GtkEntry()
-    dlexuconfig.text = cfgfile
-    cfgd = GtkButton("...")
-    cfgd.hexpand = false
-    loglabel = GtkLabel("Logname and path : ")
-    logfile = GtkEntry()
-    logfile.text = dlexucfg.logfile
-    logd = GtkButton("...")
-    logd.hexpand = false
-    inftypelabel = GtkLabel("Log Type ( LOG DLM JSON ) : ")
-    infiletype = GtkEntry()
-    infiletype.text = dlexucfg.infiletype
-    indelmlabel = GtkLabel("Incoming delimiter ( <space> <any char/s> ) : ")
-    indelm = GtkEntry()
-    indelm.text = dlexucfg.indelm
-    inqtelabel = GtkLabel("Incoming quote char ( ' ` ) : ")
-    inquote = GtkEntry()
-    inquote.text = dlexucfg.inquote
-    outdirlabel = GtkLabel("Output directory : ")
-    outdir = GtkEntry()
-    outdir.text = dlexucfg.outdir
-    outd = GtkButton("...")
-    outd.hexpand = false
-    outdelmlabel = GtkLabel("Output delimiter ( <space> <any char/s> ) : ")
-    delimiter = GtkEntry()
-    delimiter.text = dlexucfg.delimiter
-    outqtelabel = GtkLabel("Output quote char ( ' ` ) : ")
-    quotes = GtkEntry()
-    quotes.text = dlexucfg.quotes
-    datefmtlabel = GtkLabel("Output date format ( eg. YYYY-MM-DD HH:MM:SS ) : ")
-    datefmt = GtkEntry()
-    datefmt.text = dlexucfg.datefmt
+    #cfglabel = GtkLabel("Configuration file and path : ")
+    cfglabel = GtkLabel(align_string("Configuration file and path : ", 81, :r))    
+    dlexuconfig = GtkEntry(text=cfgfile)    
+    cfgd = GtkButton("...",hexpand=false)
+    loglabel = GtkLabel(align_string("Logname and path : ", 81, :r))    
+    logfile = GtkEntry(text=dlexucfg.logfile)
+    logd = GtkButton("...",hexpand=false)    
+    inftypelabel = GtkLabel(align_string("Log Type ( LOG DLM JSON ) : ", 76, :r))
+    infiletype = GtkEntry(text=dlexucfg.infiletype)
+    indelmlabel = GtkLabel(align_string("Incoming delimiter ( <space> <any char/s> ) : ", 70, :r))    
+    indelm = GtkEntry(text=dlexucfg.indelm)    
+    inqtelabel = GtkLabel(align_string("Incoming quote char ( ' ` ) : ", 79, :r))    
+    inquote = GtkEntry(text=dlexucfg.inquote)
+    outdirlabel = GtkLabel(align_string("Output directory : ", 82, :r))    
+    outdir = GtkEntry(text=dlexucfg.outdir)
+    outd = GtkButton("...",hexpand=false)    
+    outdelmlabel = GtkLabel(align_string("Output delimiter ( <space> <any char/s> ) : ", 73, :r))    
+    delimiter = GtkEntry(text=dlexucfg.delimiter)    
+    outqtelabel = GtkLabel(align_string("Output quote char ( ' ` ) : ", 80, :r))    
+    quotes = GtkEntry(text=dlexucfg.quotes)
+    datefmtlabel = GtkLabel(align_string("Output date format ( eg. YYYY-MM-DD HH:MM:SS ) : ", 65, :r))
+    datefmt = GtkEntry(text=dlexucfg.datefmt)    
 
     g[2:4,7] = cfglabel
     g[5:10,7] = dlexuconfig

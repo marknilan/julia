@@ -20,6 +20,8 @@ end
 # UI components
 function myui()
     [
+        heading("DLEXU", class = "bg-blue-1")
+        [separator(color = "primary"), p("the Devops Log EXtract Utility")]
         cell([
                 p("Enter a number")
                 # variables are bound to a component using their symbol name
@@ -34,5 +36,9 @@ end
 # definition of root route
 function runapp()
     @page("/", myui)
+    GenieFramework.up(8002, async = false)
+    r = HTTP.request("GET", "http://127.0.0.1:8002")
+    println(r.status)
+    println(String(r.body))
 end    
 

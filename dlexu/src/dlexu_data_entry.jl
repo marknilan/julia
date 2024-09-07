@@ -64,7 +64,7 @@ function make_fields(g,win,dlexucfg,cfgfile)
     g[2:4,15:20]=datefmtlabel ; g[5:10,15:20]=datefmt 
 
     function cfgclick(cfgd)
-       open_dialog("Pick a DLEXU configuration file. Must be in TOML format", win) do filename
+       open_dialog("Pick a DLEXU configuration file. Must be in TOML xxxx format", win) do filename
           dlexuconfig.text = filename
        end
     end

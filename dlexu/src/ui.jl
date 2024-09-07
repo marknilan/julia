@@ -5,5 +5,6 @@ module ui
 include("dlexu_ui_utils.jl")
 include("configure_dlexu.jl")
 include("dlexu_data_entry.jl")
+include("app.jl")
 
 end # module

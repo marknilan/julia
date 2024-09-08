@@ -109,3 +109,56 @@
 └ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
 ┌ Info: 2024-09-07 15:47:52 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
 └ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 15:47:57 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server C:\Users\mark7\.julia\packages\Genie\3gPCR\src\Server.jl:161
+┌ Info: 2024-09-07 15:47:57 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers C:\Users\mark7\.julia\packages\HTTP\sJD5V\src\Servers.jl:382
+┌ Info: 2024-09-07 15:55:48 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 15:55:54 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 15:56:00 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server C:\Users\mark7\.julia\packages\Genie\3gPCR\src\Server.jl:161
+┌ Info: 2024-09-07 15:56:00 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers C:\Users\mark7\.julia\packages\HTTP\sJD5V\src\Servers.jl:382
+┌ Info: 2024-09-07 16:09:11 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:09:17 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:09:22 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server C:\Users\mark7\.julia\packages\Genie\3gPCR\src\Server.jl:161
+┌ Info: 2024-09-07 16:09:22 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers C:\Users\mark7\.julia\packages\HTTP\sJD5V\src\Servers.jl:382
+┌ Info: 2024-09-07 16:23:50 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:23:54 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:24:43 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:24:48 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:26:03 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:26:09 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:27:48 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:27:54 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:28:00 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server C:\Users\mark7\.julia\packages\Genie\3gPCR\src\Server.jl:161
+┌ Info: 2024-09-07 16:28:01 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers C:\Users\mark7\.julia\packages\HTTP\sJD5V\src\Servers.jl:382
+┌ Info: 2024-09-07 16:31:51 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:31:57 Watching ["C:\\Users\\mark7\\projects\\julia\\dlexu\\src"]
+└ @ GenieAutoReload C:\Users\mark7\.julia\packages\GenieAutoReload\IuBCb\src\GenieAutoReload.jl:19
+┌ Info: 2024-09-07 16:32:03 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server C:\Users\mark7\.julia\packages\Genie\3gPCR\src\Server.jl:161
+┌ Info: 2024-09-07 16:32:04 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers C:\Users\mark7\.julia\packages\HTTP\sJD5V\src\Servers.jl:382

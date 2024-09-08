@@ -4,6 +4,8 @@
 
 #setup of the Genie Framework environment
 using GenieFramework
+include("../../jlib/jlib.jl")
+
 @genietools
 
 # reactive code
@@ -18,10 +20,13 @@ using GenieFramework
 end
 
 # UI components
-function myui()
+function dlexumenu(cfgfile)
     [
         heading("DLEXU", class = "bg-blue-1")
         [separator(color = "primary"), p("the Devops Log EXtract Utility")]
+        p([    
+        textfield("Configuration filename and path", :cfgfile, placeholder="$cfgfile")
+        ])
         cell([
                 p("Enter a number")
                 # variables are bound to a component using their symbol name
@@ -34,11 +39,11 @@ function myui()
 end
 
 # definition of root route
-function runapp()
-    @page("/", myui)
+function runapp(cfgfile)
+    @page("/", dlexumenu(cfgfile))
     GenieFramework.up(8002, async = false)
-    r = HTTP.request("GET", "http://127.0.0.1:8002")
-    println(r.status)
-    println(String(r.body))
-end    
+    r = jlib.open_in_default_browser("http://127.0.0.1:8002")
+    #r = HTTP.request("GET", "http://127.0.0.1:8002")
+    println(r)
+end        
 

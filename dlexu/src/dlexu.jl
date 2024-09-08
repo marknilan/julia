@@ -20,7 +20,7 @@ function dlexu()
     dlexucfg, dlexudates, dlexuencl = Startup.getTOML(ARGS[1])
     datelookup = Startup.make_datelookup(dlexudates)
     #p = ui.DlexUI(dlexucfg)
-    ui.runapp()
+    ui.runapp(ARGS[1])
     #println("p is $(p)")
     try
         dlexucfg = ui.cfgdlexu(dlexucfg,ARGS[1])

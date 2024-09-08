@@ -221,7 +221,8 @@ function open_in_default_browser(url::AbstractString)::Bool
             Base.run(`open $url`)
             return true
         elseif Sys.iswindows() || detectwsl()
-            Base.run(`start msedge $url`)
+            browser = "start msedge"
+            Base.run(`$browser $url`)
             return true
         elseif Sys.islinux()
             println("linux detected")

@@ -20,7 +20,6 @@ function dlexu()
     dlexucfg, dlexudates, dlexuencl = Startup.getTOML(ARGS[1])
     datelookup = Startup.make_datelookup(dlexudates)
     #p = ui.DlexUI(dlexucfg)
-    ui.runapp(ARGS[1])
     #println("p is $(p)")
     try
         dlexucfg = ui.cfgdlexu(dlexucfg,ARGS[1])
@@ -28,6 +27,7 @@ function dlexu()
         println("$(e) \n Dlexu cannot continue...contact your support")
         exit(8)
     end    
+    ui.runapp(ARGS[1],dlexucfg)
     # check - do we need to sample the file based on the maximum observations?
     tstpop = Startup.calc_test_population(dlexucfg.logfile, maxobs)
     enclprobs = Probability.encl_proclivity(dlexucfg.logfile, tstpop, match_margin, dlexuencl)

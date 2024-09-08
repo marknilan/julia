@@ -1,0 +1,114 @@
+┌ Info: 2024-09-08 13:13:06 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:13:07 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:13:07 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:13:07 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:13:11 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server /home/mark/.julia/packages/Genie/qPfMX/src/Server.jl:182
+┌ Info: 2024-09-08 13:13:11 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers /home/mark/.julia/packages/HTTP/sJD5V/src/Servers.jl:382
+┌ Info: 2024-09-08 13:14:51 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:14:51 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:15:30 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:15:30 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Warning: 2024-09-08 13:15:40 Failed to clean up temporary path "/tmp/jl_genie_build_5rhvcJ"
+│ ErrorException("schedule: Task not runnable")
+└ @ Base.Filesystem file.jl:549
+┌ Info: 2024-09-08 13:16:04 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:16:04 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:16:05 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:16:05 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:16:09 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server /home/mark/.julia/packages/Genie/qPfMX/src/Server.jl:182
+┌ Info: 2024-09-08 13:16:10 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers /home/mark/.julia/packages/HTTP/sJD5V/src/Servers.jl:382
+┌ Info: 2024-09-08 13:17:41 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:17:41 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Warning: 2024-09-08 13:20:13 Failed to clean up temporary path "/tmp/jl_genie_build_rR4TSf"
+│ ErrorException("schedule: Task not runnable")
+└ @ Base.Filesystem file.jl:549
+┌ Info: 2024-09-08 13:31:25 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:31:26 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:31:26 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:31:26 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:31:30 
+│ Web Server starting at http://127.0.0.1:8002 
+└ @ Genie.Server /home/mark/.julia/packages/Genie/qPfMX/src/Server.jl:182
+┌ Info: 2024-09-08 13:31:30 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers /home/mark/.julia/packages/HTTP/sJD5V/src/Servers.jl:382
+┌ Info: 2024-09-08 13:31:58 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:31:58 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:31:59 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:31:59 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:32:02 
+│ Web Server starting at http://127.0.0.1:8002 
+└ @ Genie.Server /home/mark/.julia/packages/Genie/qPfMX/src/Server.jl:182
+┌ Info: 2024-09-08 13:32:02 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers /home/mark/.julia/packages/HTTP/sJD5V/src/Servers.jl:382
+┌ Info: 2024-09-08 13:33:24 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:33:24 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:33:24 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:33:24 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:33:28 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server /home/mark/.julia/packages/Genie/qPfMX/src/Server.jl:182
+┌ Info: 2024-09-08 13:33:28 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers /home/mark/.julia/packages/HTTP/sJD5V/src/Servers.jl:382
+┌ Warning: 2024-09-08 13:34:10 Failed to clean up temporary path "/tmp/jl_genie_build_NdNoo3"
+│ ErrorException("schedule: Task not runnable")
+└ @ Base.Filesystem file.jl:549
+┌ Info: 2024-09-08 13:41:15 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:41:15 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:41:16 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:41:16 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:42:49 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:42:51 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:43:26 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:43:27 Watching ["/home/mark/projects/julia/dlexu/src"]
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:19
+┌ Info: 2024-09-08 13:43:27 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:43:27 Autoreloading
+└ @ GenieAutoReload /home/mark/.julia/packages/GenieAutoReload/ESvsh/src/GenieAutoReload.jl:22
+┌ Info: 2024-09-08 13:43:31 
+│ Web Server starting at http://127.0.0.1:8002 - press Ctrl/Cmd+C to stop the server. 
+└ @ Genie.Server /home/mark/.julia/packages/Genie/qPfMX/src/Server.jl:182
+┌ Info: 2024-09-08 13:43:31 Listening on: 127.0.0.1:8002, thread id: 1
+└ @ HTTP.Servers /home/mark/.julia/packages/HTTP/sJD5V/src/Servers.jl:382
+┌ Warning: 2024-09-08 13:50:35 Failed to clean up temporary path "/tmp/jl_genie_build_6VfpLn"
+│ ErrorException("schedule: Task not runnable")
+└ @ Base.Filesystem file.jl:549
